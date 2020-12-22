@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "downlevelIteration": true,
+    "target": "es2015"
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  },
+  "exclude": ["node_modules", "backend", "dist", "**/*spec.ts"]
+}

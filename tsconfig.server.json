@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "outDir": "./dist/api",
+    "baseUrl": "./",
+    "incremental": true
+  },
+  "exclude": ["node_modules", "frontend", "dist"]
+}

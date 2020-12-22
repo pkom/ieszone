@@ -49,6 +49,7 @@
             "main": "frontend/school/src/main.ts",
             "polyfills": "frontend/school/src/polyfills.ts",
             "tsConfig": "frontend/school/tsconfig.app.json",
+            "progress": true,
             "aot": true,
             "assets": [
               "frontend/school/src/favicon.ico",
@@ -92,7 +93,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "school:build"
+            "browserTarget": "school:build",
+            "proxyConfig": "frontend/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -104,6 +106,12 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "school:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["frontend/school/tsconfig.app.json"]
           }
         }
       }
@@ -151,6 +159,7 @@
             "main": "frontend/admin/src/main.ts",
             "polyfills": "frontend/admin/src/polyfills.ts",
             "tsConfig": "frontend/admin/tsconfig.app.json",
+            "progress": true,
             "aot": true,
             "assets": [
               "frontend/admin/src/favicon.ico",
@@ -194,7 +203,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "admin:build"
+            "browserTarget": "admin:build",
+            "proxyConfig": "frontend/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -206,6 +216,12 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "admin:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["frontend/admin/tsconfig.app.json"]
           }
         }
       }
@@ -253,6 +269,7 @@
             "main": "frontend/super/src/main.ts",
             "polyfills": "frontend/super/src/polyfills.ts",
             "tsConfig": "frontend/super/tsconfig.app.json",
+            "progress": true,
             "aot": true,
             "assets": [
               "frontend/super/src/favicon.ico",
@@ -296,7 +313,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "super:build"
+            "browserTarget": "super:build",
+            "proxyConfig": "frontend/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -308,6 +326,12 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "super:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["frontend/super/tsconfig.app.json"]
           }
         }
       }
@@ -355,6 +379,7 @@
             "main": "frontend/sandbox/src/main.ts",
             "polyfills": "frontend/sandbox/src/polyfills.ts",
             "tsConfig": "frontend/sandbox/tsconfig.app.json",
+            "progress": true,
             "aot": true,
             "assets": [
               "frontend/sandbox/src/favicon.ico",
@@ -398,7 +423,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sandbox:build"
+            "browserTarget": "sandbox:build",
+            "proxyConfig": "frontend/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -410,6 +436,52 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "sandbox:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["frontend/sandbox/tsconfig.app.json"]
+          }
+        }
+      }
+    },
+    "shared": {
+      "projectType": "library",
+      "root": "frontend/shared",
+      "sourceRoot": "frontend/shared/src",
+      "prefix": "iz",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "frontend/shared/tsconfig.lib.json",
+            "project": "frontend/shared/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "frontend/shared/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "frontend/shared/src/test.ts",
+            "tsConfig": "frontend/shared/tsconfig.spec.json",
+            "karmaConfig": "frontend/shared/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "frontend/shared/tsconfig.lib.json",
+              "frontend/shared/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

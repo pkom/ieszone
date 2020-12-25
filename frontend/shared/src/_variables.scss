@@ -1,0 +1,43 @@
+// Fonts
+@font-face {
+  font-family: aBold;
+  src: url('assets/fonts/AlegreyaSans-Bold.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: aRegular;
+  src: url('assets/fonts/AlegreyaSans-Regular.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: mBold;
+  src: url('assets/fonts/Montserrat-Bold.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: mRegular;
+  src: url('assets/fonts/Montserrat-Medium.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: mLight;
+  src: url('assets/fonts/Montserrat-Light.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: mItalic;
+  src: url('assets/fonts/Montserrat-LightItalic.ttf');
+  font-display: swap;
+}
+
+// css variables
+:root {
+  //colors
+  --primary-app-color: #1976d2;
+  --secondary-app-color: #616161;
+}

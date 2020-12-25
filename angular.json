@@ -53,9 +53,15 @@
             "aot": true,
             "assets": [
               "frontend/school/src/favicon.ico",
-              "frontend/school/src/assets"
+              "frontend/school/src/assets",
+              {
+                "glob": "**/*",
+                "input": "frontend/shared/src/lib",
+                "output": "/assets/"
+              }  
             ],
             "styles": [
+              "frontend/shared/src/global.scss",
               "frontend/school/src/styles.scss"
             ],
             "scripts": []
@@ -163,9 +169,15 @@
             "aot": true,
             "assets": [
               "frontend/admin/src/favicon.ico",
-              "frontend/admin/src/assets"
+              "frontend/admin/src/assets",
+              {
+                "glob": "**/*",
+                "input": "frontend/shared/src/lib",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "frontend/shared/src/global.scss",
               "frontend/admin/src/styles.scss"
             ],
             "scripts": []
@@ -273,9 +285,15 @@
             "aot": true,
             "assets": [
               "frontend/super/src/favicon.ico",
-              "frontend/super/src/assets"
+              "frontend/super/src/assets",
+              {
+                "glob": "**/*",
+                "input": "frontend/shared/src/lib",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "frontend/shared/src/global.scss",
               "frontend/super/src/styles.scss"
             ],
             "scripts": []
@@ -383,9 +401,15 @@
             "aot": true,
             "assets": [
               "frontend/sandbox/src/favicon.ico",
-              "frontend/sandbox/src/assets"
+              "frontend/sandbox/src/assets",
+              {
+                "glob": "**/*",
+                "input": "frontend/shared/src/lib",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "frontend/shared/src/global.scss",
               "frontend/sandbox/src/styles.scss"
             ],
             "scripts": []

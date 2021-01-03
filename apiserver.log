@@ -1,0 +1,10 @@
+{"message":"Authenticating ldap user alumno","level":"debug","timestamp":"2020-12-31T20:09:22.838Z"}
+{"message":"Rejecting authentication for student alumno","level":"error","timestamp":"2020-12-31T20:09:22.845Z"}
+{"message":"Authenticating ldap user alumno","level":"debug","timestamp":"2021-01-02T18:09:12.389Z"}
+{"message":"Rejecting authentication for student alumno","level":"error","timestamp":"2021-01-02T18:09:12.390Z"}
+{"message":"Authenticating ldap user alumno","level":"debug","timestamp":"2021-01-03T19:43:37.371Z"}
+{"message":"Rejecting authentication for student alumno","level":"error","timestamp":"2021-01-03T19:43:37.372Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-03T19:44:05.743Z"}
+{"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-03T19:44:05.749Z"}
+{"message":"User profesor has been updated","level":"debug","timestamp":"2021-01-03T19:44:05.876Z"}
+{"message":"Token generated for user profesor","level":"debug","timestamp":"2021-01-03T19:44:05.932Z"}

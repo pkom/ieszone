@@ -30,9 +30,13 @@
       "@iz/utils": [
         "backend/utils"
       ],
-      "shared": [
-        "dist/shared/shared",
-        "dist/shared"
+      "@iz/entities": [
+        "backend/shared/entities"
+      ],
+      "@iz/shared": [
+        "backend/shared/decorators",
+        "backend/shared/filters",
+        "backend/shared/guards"
       ]
     }
   },

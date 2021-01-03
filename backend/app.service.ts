@@ -1,17 +1,22 @@
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@nestjs/common';
 import { InjectConnection } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
-import { config } from './config';
 import { AppStatus } from '@iz/interface';
-
+import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class AppService {
-  constructor(@InjectConnection() private connection: Connection) {}
+  constructor(
+    @InjectConnection() private connection: Connection,
+    private readonly configService: ConfigService,
+  ) {}
 
   appStatus(): AppStatus {
     return {
-      message: `${config.appName} is running on port ${config.port}. Connected to ${this.connection.name}`,
+      message: `${this.configService.get(
+        'appName',
+      )} is running on port ${this.configService.get('port')}. Connected to ${
+        this.connection.options.database
+      } database on ${this.configService.get('database.host')}`,
     };
   }
 }

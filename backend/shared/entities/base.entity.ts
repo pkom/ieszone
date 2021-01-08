@@ -8,11 +8,11 @@ export abstract class BaseEntity extends TimeStampEntity {
   id: string;
 
   @Exclude()
-  @Column({ type: 'boolean', default: true })
+  @Column({ name: 'is_active', type: 'boolean', default: true })
   isActive: boolean;
 
   @Exclude()
-  @Column({ type: 'boolean', default: false })
+  @Column({ name: 'is_archived', type: 'boolean', default: false })
   isArchived: boolean;
 
   @Exclude()

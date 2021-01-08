@@ -9,22 +9,23 @@ import { BaseEntity } from './base.entity';
 @Index(['middleName', 'lastName', 'firstName'])
 export abstract class PersonEntity extends BaseEntity {
   @Column({
+    name: 'id_type',
     type: 'enum',
     enum: IdType,
     default: IdType.DNI,
   })
   idType: IdType;
 
-  @Column({ type: 'varchar', length: 15, nullable: true })
+  @Column({ name: 'id_number', type: 'varchar', length: 15, nullable: true })
   idNumber: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Column({ name: 'first_name', type: 'varchar', length: 50 })
   firstName: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Column({ name: 'middle_name', type: 'varchar', length: 50 })
   middleName: string;
 
-  @Column({ type: 'varchar', length: 50, nullable: true })
+  @Column({ name: 'last_name', type: 'varchar', length: 50, nullable: true })
   lastName: string;
 
   @Exclude()
@@ -48,7 +49,7 @@ export abstract class PersonEntity extends BaseEntity {
   city: string;
 
   @Exclude()
-  @Column({ type: 'varchar', length: 5, nullable: true })
+  @Column({ name: 'zip_code', type: 'varchar', length: 5, nullable: true })
   @Index()
   zipCode: string;
 

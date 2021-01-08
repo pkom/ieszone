@@ -8,3 +8,158 @@
 {"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-03T19:44:05.749Z"}
 {"message":"User profesor has been updated","level":"debug","timestamp":"2021-01-03T19:44:05.876Z"}
 {"message":"Token generated for user profesor","level":"debug","timestamp":"2021-01-03T19:44:05.932Z"}
+{"message":"Creating center 4444444","level":"debug","timestamp":"2021-01-04T11:19:20.382Z"}
+{"message":"Calling post method on controller centers to create center 4444444","level":"debug","timestamp":"2021-01-04T11:22:48.409Z"}
+{"message":"Creating center 4444444","level":"debug","timestamp":"2021-01-04T11:22:48.410Z"}
+{"message":"Calling post method on controller centers to create center 4444444","level":"debug","timestamp":"2021-01-04T11:24:30.048Z"}
+{"message":"Calling create center service create center 4444444","level":"debug","timestamp":"2021-01-04T11:24:30.050Z"}
+{"message":"Calling post method on controller centers to create center 4444444","level":"debug","timestamp":"2021-01-04T11:25:16.287Z"}
+{"message":"Calling create center service method for 4444444","level":"debug","timestamp":"2021-01-04T11:25:16.288Z"}
+{"message":"Calling post method on controller centers to create center 4444444","level":"debug","timestamp":"2021-01-04T11:32:58.292Z"}
+{"message":"Calling create center service method for 4444444","level":"debug","timestamp":"2021-01-04T11:32:58.293Z"}
+{"message":"Calling post method on controller centers to create center 4444444","level":"debug","timestamp":"2021-01-04T11:33:56.093Z"}
+{"message":"Calling create center service method for 4444444","level":"debug","timestamp":"2021-01-04T11:33:56.093Z"}
+{"message":"Calling post method on controller centers to create center 4444444","level":"debug","timestamp":"2021-01-04T11:45:31.461Z"}
+{"message":"Calling create center service method for 4444444","level":"debug","timestamp":"2021-01-04T11:45:31.462Z"}
+{"message":"Calling post method on controller centers to create center 4444445","level":"debug","timestamp":"2021-01-04T11:47:24.575Z"}
+{"message":"Calling create center service method for 4444445","level":"debug","timestamp":"2021-01-04T11:47:24.575Z"}
+{"message":"Calling post method on controller centers to create center 4444445","level":"debug","timestamp":"2021-01-04T11:50:46.206Z"}
+{"message":"Calling create center service method for 4444445","level":"debug","timestamp":"2021-01-04T11:50:46.207Z"}
+{"message":"Calling post method on controller centers to create center 4444445","level":"debug","timestamp":"2021-01-04T11:50:57.041Z"}
+{"message":"Calling create center service method for 4444445","level":"debug","timestamp":"2021-01-04T11:50:57.041Z"}
+{"message":"Calling post method on controller centers to create center 4444445","level":"debug","timestamp":"2021-01-04T11:51:10.638Z"}
+{"message":"Calling create center service method for 4444445","level":"debug","timestamp":"2021-01-04T11:51:10.638Z"}
+{"message":"Calling post method on controller centers to create center 4444445","level":"debug","timestamp":"2021-01-04T11:59:52.997Z"}
+{"message":"Calling create center service method for 4444445","level":"debug","timestamp":"2021-01-04T11:59:52.998Z"}
+{"message":"Calling post method on controller centers to create center 4444446","level":"debug","timestamp":"2021-01-04T12:00:01.621Z"}
+{"message":"Calling create center service method for 4444446","level":"debug","timestamp":"2021-01-04T12:00:01.621Z"}
+{"message":"Calling post method on controller centers to create center 4444446","level":"debug","timestamp":"2021-01-04T12:01:40.565Z"}
+{"message":"Calling create center service method for 4444446","level":"debug","timestamp":"2021-01-04T12:01:40.565Z"}
+{"message":"Calling post method on controller centers to create center 4444446","level":"debug","timestamp":"2021-01-04T12:05:39.099Z"}
+{"message":"Calling create center service method for 4444446","level":"debug","timestamp":"2021-01-04T12:05:39.101Z"}
+{"message":"Calling post method on controller centers to create center 4444447","level":"debug","timestamp":"2021-01-04T12:05:45.041Z"}
+{"message":"Calling create center service method for 4444447","level":"debug","timestamp":"2021-01-04T12:05:45.042Z"}
+{"message":"Calling post method on controller centers to create center 4444447","level":"debug","timestamp":"2021-01-04T12:05:51.001Z"}
+{"message":"Calling create center service method for 4444447","level":"debug","timestamp":"2021-01-04T12:05:51.002Z"}
+{"message":"Calling post method on controller centers to create center 4444448","level":"debug","timestamp":"2021-01-04T12:07:35.200Z"}
+{"message":"Calling create center service method for 4444448","level":"debug","timestamp":"2021-01-04T12:07:35.201Z"}
+{"message":"Calling post method on controller centers to create center 4444449","level":"debug","timestamp":"2021-01-04T12:56:30.968Z"}
+{"message":"Calling create center service method for 4444449","level":"debug","timestamp":"2021-01-04T12:56:30.970Z"}
+{"message":"Calling post method on controller centers to create center 4444449","level":"debug","timestamp":"2021-01-04T12:56:51.640Z"}
+{"message":"Calling create center service method for 4444449","level":"debug","timestamp":"2021-01-04T12:56:51.640Z"}
+{"message":"Calling post method on controller centers to create center 4444449","level":"debug","timestamp":"2021-01-04T12:57:28.863Z"}
+{"message":"Calling create center service method for 4444449","level":"debug","timestamp":"2021-01-04T12:57:28.864Z"}
+{"message":"Calling post method on controller centers to create center 4444450","level":"debug","timestamp":"2021-01-04T12:57:36.749Z"}
+{"message":"Calling create center service method for 4444450","level":"debug","timestamp":"2021-01-04T12:57:36.749Z"}
+{"message":"Calling post method on controller centers to create center 0600501","level":"debug","timestamp":"2021-01-05T00:03:15.795Z"}
+{"message":"Calling post method on controller centers to create center 0600501","level":"debug","timestamp":"2021-01-05T00:03:41.537Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-05T00:35:36.916Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-05T00:40:43.337Z"}
+{"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T00:40:43.343Z"}
+{"message":"User profesor has been created","level":"debug","timestamp":"2021-01-05T00:40:43.464Z"}
+{"message":"Role TEACHER created","level":"debug","timestamp":"2021-01-05T00:40:43.512Z"}
+{"message":"Token generated for user profesor","level":"debug","timestamp":"2021-01-05T00:40:43.555Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-05T00:42:23.105Z"}
+{"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T00:42:23.117Z"}
+{"message":"User profesor has been updated","level":"debug","timestamp":"2021-01-05T00:42:23.350Z"}
+{"message":"Token generated for user profesor","level":"debug","timestamp":"2021-01-05T00:42:23.443Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-05T00:45:30.472Z"}
+{"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T00:45:30.473Z"}
+{"message":"User profesor has been updated","level":"debug","timestamp":"2021-01-05T00:45:30.661Z"}
+{"message":"Token generated for user profesor","level":"debug","timestamp":"2021-01-05T00:45:30.717Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-05T00:45:44.605Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-05T00:46:03.550Z"}
+{"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T00:46:03.551Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-05T00:46:15.469Z"}
+{"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T00:46:15.470Z"}
+{"message":"User profesor has been updated","level":"debug","timestamp":"2021-01-05T00:46:15.637Z"}
+{"message":"Token generated for user profesor","level":"debug","timestamp":"2021-01-05T00:46:15.670Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-05T00:53:26.400Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T00:53:26.407Z"}
+{"message":"User fmoras01 has been created","level":"debug","timestamp":"2021-01-05T00:53:26.527Z"}
+{"message":"Role ADMINISTRATOR created","level":"debug","timestamp":"2021-01-05T00:53:26.569Z"}
+{"message":"Role RESPONSIBLE created","level":"debug","timestamp":"2021-01-05T00:53:26.588Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-05T00:53:26.628Z"}
+{"message":"user fmoras01 is retrieving his profile","level":"debug","timestamp":"2021-01-05T00:54:21.847Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-05T00:57:43.211Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T00:57:43.215Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-05T00:57:43.558Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-05T00:57:43.628Z"}
+{"message":"Calling post method on controller centers to create center string","level":"debug","timestamp":"2021-01-05T01:00:52.507Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-05T12:51:27.431Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T12:51:27.463Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-05T12:51:27.862Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-05T12:51:27.991Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-05T13:04:35.700Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T13:04:35.703Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-05T13:04:36.034Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-05T13:04:36.153Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-05T13:15:08.974Z"}
+{"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T13:15:08.976Z"}
+{"message":"User profesor has been updated","level":"debug","timestamp":"2021-01-05T13:15:09.229Z"}
+{"message":"Token generated for user profesor","level":"debug","timestamp":"2021-01-05T13:15:09.424Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-05T13:16:51.816Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T13:16:51.818Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-05T13:16:52.066Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-05T13:16:52.223Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-05T14:55:59.324Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T14:55:59.332Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-05T14:55:59.838Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-05T14:56:00.152Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-05T14:56:30.258Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T14:56:30.259Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-05T14:56:30.488Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-05T14:56:30.593Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-05T16:42:54.577Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T16:42:54.590Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-05T16:42:55.017Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-05T16:42:55.230Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-05T17:52:07.362Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T17:52:07.369Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-05T17:52:07.849Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-05T17:52:08.285Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-05T18:18:04.019Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-05T18:18:04.029Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-05T18:18:04.312Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-05T18:18:04.414Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-07T19:43:36.416Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-07T19:43:36.424Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-07T19:43:36.587Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-07T19:43:36.651Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-07T19:46:26.746Z"}
+{"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-07T19:46:26.747Z"}
+{"message":"User profesor has been updated","level":"debug","timestamp":"2021-01-07T19:46:26.968Z"}
+{"message":"Token generated for user profesor","level":"debug","timestamp":"2021-01-07T19:46:27.025Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-07T20:03:35.786Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-07T20:03:35.791Z"}
+{"message":"User administrativo has been created","level":"debug","timestamp":"2021-01-07T20:03:35.882Z"}
+{"message":"Role ADMINISTRATION created","level":"debug","timestamp":"2021-01-07T20:03:35.923Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-07T20:03:35.976Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-08T14:52:47.572Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-08T14:52:47.590Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-08T14:52:47.714Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-08T14:52:47.835Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-08T15:41:52.286Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-08T15:41:52.295Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-08T15:41:52.433Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-08T15:41:52.738Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-08T16:05:17.797Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-08T16:05:17.815Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-08T16:05:18.007Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-08T16:05:18.067Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-08T16:15:25.769Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-08T16:15:25.777Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-08T16:15:25.904Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-08T16:15:25.991Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-08T16:22:05.085Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-08T16:22:05.089Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-08T16:22:05.154Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-08T16:22:05.221Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-08T16:37:19.088Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-08T16:37:19.109Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-08T16:37:19.285Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-08T16:37:19.354Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-08T23:15:56.510Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-08T23:15:56.527Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-08T23:15:56.765Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-08T23:15:56.872Z"}

@@ -3,6 +3,7 @@ import { Entity, Column, OneToMany } from 'typeorm';
 import { BaseEntity } from '@iz/entities';
 
 import { CourseDepartment } from './course.department.entity';
+import { Book } from '../../books/entities/book.entity';
 
 @Entity({ name: 'departments' })
 export class Department extends BaseEntity {
@@ -19,4 +20,7 @@ export class Department extends BaseEntity {
     (courseDepartment) => courseDepartment.department,
   )
   courseDepartments: CourseDepartment[];
+
+  @OneToMany((type) => Book, (book) => book.department)
+  books: Book[];
 }

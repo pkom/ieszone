@@ -7,6 +7,7 @@ import {
   ManyToMany,
   JoinTable,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 
 import { BaseEntity } from '@iz/entities';
@@ -14,6 +15,7 @@ import { BaseEntity } from '@iz/entities';
 import { Student } from '../../students/entities/student.entity';
 import { Teacher } from '../../teachers/entities/teacher.entity';
 import { Role } from '../../roles/entities/role.entity';
+import { Transaction } from '../../books/entities/transaction.entity';
 
 @Entity({ name: 'users' })
 export class User extends BaseEntity {
@@ -59,4 +61,7 @@ export class User extends BaseEntity {
   @ManyToMany(() => Role, (role) => role.users)
   @JoinTable({ name: 'user_roles' })
   roles: Role[];
+
+  @OneToMany((type) => Transaction, (transaction) => transaction.user)
+  transactions: Transaction[];
 }

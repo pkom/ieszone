@@ -50,3 +50,6 @@ Thumbs.db
 
 # typeorm
 ormconfig.json
+
+# postgres data
+/pg-data

@@ -16,7 +16,18 @@ import { User } from '../../shared/decorators/user.decorator';
 import { UserLoginDto } from './dto/user-login.dto';
 import { Logger } from 'winston';
 import { ResponseTokenDto } from './dto/response-token.dto';
+import {
+  ApiBadRequestResponse,
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 
+const name = 'authentication';
+
+@ApiTags(name)
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -24,6 +35,15 @@ export class AuthController {
     private readonly authService: AuthService,
   ) {}
 
+  @ApiCreatedResponse({
+    description: 'User has been successfully authenticated',
+  })
+  @ApiBadRequestResponse({
+    description: 'Incorrect parameters have been submitted',
+  })
+  @ApiUnauthorizedResponse({
+    description: 'Incorrect credentials have been submitted',
+  })
   @UseGuards(LdapAuthGuard)
   @Post('login')
   login(
@@ -36,10 +56,17 @@ export class AuthController {
     return this.authService.validateLdapLogin(req.user, userLoginDto.courseid);
   }
 
+  @ApiBearerAuth()
+  @ApiOkResponse({
+    description: 'User profile has been successfully read',
+  })
+  @ApiUnauthorizedResponse({
+    description: 'User is not authenticated',
+  })
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@User() user) {
-    this.logger.verbose(`user ${user.username} is retrieving his profile`);
+    this.logger.debug(`user ${user.username} is retrieving his profile`);
     return user;
   }
 }

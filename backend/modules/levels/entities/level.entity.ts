@@ -3,6 +3,7 @@ import { Entity, Column, OneToMany } from 'typeorm';
 import { BaseEntity } from '@iz/entities';
 
 import { Group } from '../../groups/entities/group.entity';
+import { Book } from '../../books/entities/book.entity';
 
 @Entity({ name: 'levels' })
 export class Level extends BaseEntity {
@@ -13,4 +14,7 @@ export class Level extends BaseEntity {
   // Level <<- Group
   @OneToMany(() => Group, (group) => group.level)
   groups: Group[];
+
+  @OneToMany((type) => Book, (book) => book.level)
+  books: Book[];
 }

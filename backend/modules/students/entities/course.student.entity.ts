@@ -14,6 +14,8 @@ import { Course } from '../../courses/entities/course.entity';
 import { CourseGroup } from '../../groups/entities/course.group.entity';
 import { CourseGroupStudent } from '../../groups/entities/course.group.student.entity';
 import { Student } from './student.entity';
+import { Copy } from '../../books/entities/copy.entity';
+import { Transaction } from '../../books/entities/transactions.entity';
 
 @Entity({ name: 'courses_students' })
 export class CourseStudent extends TimeStampEntity {
@@ -50,4 +52,10 @@ export class CourseStudent extends TimeStampEntity {
   // CourseGroup <-> CourseStudent
   @OneToOne(() => CourseGroup, (courseGroup) => courseGroup.delegateStudent)
   delegateGroup: CourseGroup;
+
+  @OneToMany((type) => Copy, (copy) => copy.courseStudent)
+  copies: Copy[];
+
+  @OneToMany((type) => Transaction, (transaction) => transaction.courseStudent)
+  transactions: Transaction[];
 }

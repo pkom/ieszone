@@ -17,11 +17,11 @@ import { RolesModule } from './modules/roles/roles.module';
 import { StudentsModule } from './modules/students/students.module';
 import { TeachersModule } from './modules/teachers/teachers.module';
 import { UsersModule } from './modules/users/users.module';
+import { BooksModule } from './modules/books/books.module';
 import {
   WinstonModule,
   utilities as nestWinstonModuleUtilities,
 } from 'nest-winston';
-import { inject } from '@angular/core';
 
 @Module({
   imports: [
@@ -63,7 +63,10 @@ import { inject } from '@angular/core';
         password: configService.get('database.password'),
         // autoLoadEntities: true,
         entities: ['dist/api/**/*.entity{.ts,.js}'],
+        migrations: ['backend/migration/*.ts'],
         synchronize: configService.get('env') !== 'production',
+        // logging: configService.get('env') === 'production' ? false : ['query'],
+        logging: false,
       }),
       inject: [ConfigService],
     }),
@@ -77,6 +80,7 @@ import { inject } from '@angular/core';
     RolesModule,
     ConfigurationModule,
     AuthModule,
+    BooksModule,
   ],
   controllers: [AppController],
   providers: [AppService, Logger],

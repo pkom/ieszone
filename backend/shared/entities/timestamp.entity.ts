@@ -3,10 +3,10 @@ import { UpdateDateColumn, CreateDateColumn } from 'typeorm';
 
 export abstract class TimeStampEntity {
   @Exclude()
-  @CreateDateColumn({ type: 'timestamptz' })
+  @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
   createdAt: Date;
 
   @Exclude()
-  @UpdateDateColumn({ type: 'timestamptz' })
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
   updatedAt: Date;
 }

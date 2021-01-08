@@ -32,12 +32,8 @@ class ConfigServiceRayuela {
       username: this.getValue('IZ_DB_USER'),
       password: this.getValue('IZ_DB_PASS'),
       database: this.getValue('IZ_DB_NAME'),
-
-      entities: ['dist/api/**/*.entity{.ts,.js}'],
-
-      synchronize: !this.isProduction(),
-      logging: this.isProduction() ? ['error'] : 'all',
-
+      entities: ['backend/**/*.entity.ts'],
+      synchronize: false,
       migrationsTableName: 'migration',
       migrations: ['backend/migration/*.ts'],
       cli: {

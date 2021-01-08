@@ -2,48 +2,98 @@ import {
   Injectable,
   ConflictException,
   NotFoundException,
+  Inject,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Center } from './entities/center.entity';
-import { Repository, DeleteResult } from 'typeorm';
-import { CenterDTO } from './dto/center.dto';
+import { Repository } from 'typeorm';
+import { CreateCenterDto } from './dto/create-center.dto';
+import { UpdateCenterDto } from './dto/update-center.dto';
+import { Logger } from 'winston';
+import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 
 @Injectable()
 export class CentersService {
   constructor(
+    @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
     @InjectRepository(Center)
     private readonly centersRepository: Repository<Center>,
   ) {}
 
-  public async getAll(): Promise<Center[]> {
-    return await this.centersRepository.find();
+  getAll() {
+    return this.centersRepository.find({
+      where: {
+        isActive: true,
+      },
+    });
   }
 
-  public async getById(id: string): Promise<Center> {
-    const center = await this.centersRepository.findOne(id);
+  async getById(id: string) {
+    const center = await this.centersRepository.findOne({
+      where: {
+        id,
+        isActive: true,
+      },
+    });
     if (!center) {
-      throw new NotFoundException('Center does not exist');
+      throw new NotFoundException(
+        `Center ${id} doesn't exist or it's not active`,
+      );
     }
     return center;
   }
 
-  public async create(centerDTO: CenterDTO): Promise<Center> {
+  async getByCode(code: string) {
     const center = await this.centersRepository.findOne({
-      code: centerDTO.code,
+      where: {
+        code,
+        isActive: true,
+      },
+    });
+    if (!center) {
+      throw new NotFoundException(
+        `Center ${code} doesn't exist or it's not active`,
+      );
+    }
+    return center;
+  }
+
+  async create(createCenterDto: CreateCenterDto) {
+    const center = await this.centersRepository.findOne({
+      where: [
+        { code: createCenterDto.code },
+        { denomination: createCenterDto.denomination },
+      ],
     });
     if (center) {
-      throw new ConflictException(`Center ${centerDTO.code} already exists`);
+      throw new ConflictException(
+        `Center ${createCenterDto.code} already exists`,
+      );
     }
-    return await this.centersRepository.save(centerDTO);
+    return this.centersRepository.save(
+      this.centersRepository.create(createCenterDto),
+    );
   }
 
-  public async update(id: string, centerDTO: CenterDTO): Promise<Center> {
-    const center = await this.getById(id);
-    await this.centersRepository.update(center.id, centerDTO);
-    return await this.getById(center.id);
+  async update(id: string, updateCenterDto: UpdateCenterDto) {
+    const center = await this.centersRepository.preload({
+      id,
+      ...updateCenterDto,
+    });
+    if (!center) {
+      throw new NotFoundException(`Center ${id} not found`);
+    }
+    return this.centersRepository.save(center);
   }
 
-  public async delete(id: string): Promise<DeleteResult> {
-    return await this.centersRepository.delete(id);
+  async delete(id: string) {
+    const center = await this.centersRepository.preload({
+      id,
+      isActive: false,
+    });
+    if (!center) {
+      throw new NotFoundException(`Center ${id} not found`);
+    }
+    return this.centersRepository.save(center);
   }
 }

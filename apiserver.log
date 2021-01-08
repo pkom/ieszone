@@ -159,7 +159,10 @@
 {"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-08T16:37:19.109Z"}
 {"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-08T16:37:19.285Z"}
 {"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-08T16:37:19.354Z"}
+<<<<<<< HEAD
 {"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-08T23:15:56.510Z"}
 {"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-08T23:15:56.527Z"}
 {"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-08T23:15:56.765Z"}
 {"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-08T23:15:56.872Z"}
+=======
+>>>>>>> 193d48ad8f82d37d3da3c029d92876e118c161fa

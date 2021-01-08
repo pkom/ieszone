@@ -53,3 +53,6 @@ ormconfig.json
 
 # postgres data
 /pg-data
+
+# log
+apiserver.log

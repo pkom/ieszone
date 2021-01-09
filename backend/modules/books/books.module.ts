@@ -16,12 +16,14 @@ import { UsersModule } from '../users/users.module';
 import { LevelsModule } from '../levels/levels.module';
 import { StudentsModule } from '../students/students.module';
 import { TransactionsController } from './transactions.controller';
+import { DepartmentsModule } from '../../modules/departments/departments.module';
 @Module({
   imports: [
     TypeOrmModule.forFeature([Author, Book, Copy, Transaction, Publisher]),
     UsersModule,
     LevelsModule,
     StudentsModule,
+    DepartmentsModule,
   ],
   controllers: [
     BooksController,

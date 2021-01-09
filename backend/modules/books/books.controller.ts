@@ -177,4 +177,58 @@ export class BooksController {
   ) {
     return this.booksService.addPublisher(bookId, publisherId);
   }
+
+  @Post(':bookId/addlevel/:levelId')
+  @ApiBearerAuth()
+  @ApiCreatedResponse({
+    description: 'Level has been succesully added to book',
+  })
+  @ApiConflictResponse({ description: 'Book already has the level' })
+  @ApiBadRequestResponse({ description: 'Bad request' })
+  @ApiNotFoundResponse({
+    description: 'Book or Level does not exist or has been deactivated',
+  })
+  @ApiUnauthorizedResponse({
+    description:
+      'Only authenticated administrators and administration staff are allowed to add level to books',
+  })
+  @ApiForbiddenResponse({
+    description:
+      'Only authenticated administrators and administration staff are allowed to add level to books',
+  })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMINISTRATOR, UserRole.ADMINISTRATION)
+  addLevel(
+    @Param('bookId', ParseUUIDPipe) bookId: string,
+    @Param('levelId', ParseUUIDPipe) levelId: string,
+  ) {
+    return this.booksService.addLevel(bookId, levelId);
+  }
+
+  @Post(':bookId/adddepartment/:departmentId')
+  @ApiBearerAuth()
+  @ApiCreatedResponse({
+    description: 'Department has been succesully added to book',
+  })
+  @ApiConflictResponse({ description: 'Book already has the department' })
+  @ApiBadRequestResponse({ description: 'Bad request' })
+  @ApiNotFoundResponse({
+    description: 'Book or Department does not exist or has been deactivated',
+  })
+  @ApiUnauthorizedResponse({
+    description:
+      'Only authenticated administrators and administration staff are allowed to add department to books',
+  })
+  @ApiForbiddenResponse({
+    description:
+      'Only authenticated administrators and administration staff are allowed to add department to books',
+  })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMINISTRATOR, UserRole.ADMINISTRATION)
+  addDepartment(
+    @Param('bookId', ParseUUIDPipe) bookId: string,
+    @Param('departmentId', ParseUUIDPipe) departmentId: string,
+  ) {
+    return this.booksService.addDepartment(bookId, departmentId);
+  }
 }

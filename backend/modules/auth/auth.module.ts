@@ -11,13 +11,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { RolesModule } from '../roles/roles.module';
 import { TeachersModule } from '../teachers/teachers.module';
 import { CoursesModule } from '../courses/courses.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { RefreshToken } from './entities/refresh-token.entity';
+import { RefreshTokenService } from './refresh-token.service';
 
 @Module({
   imports: [
-    CoursesModule,
-    UsersModule,
-    TeachersModule,
-    RolesModule,
+    TypeOrmModule.forFeature([RefreshToken]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
       imports: [ConfigModule],
@@ -27,9 +27,13 @@ import { CoursesModule } from '../courses/courses.module';
       }),
       inject: [ConfigService],
     }),
+    CoursesModule,
+    UsersModule,
+    TeachersModule,
+    RolesModule,
   ],
-  providers: [AuthService, LdapStrategy, JwtStrategy],
+  providers: [AuthService, RefreshTokenService, LdapStrategy, JwtStrategy],
   controllers: [AuthController],
-  exports: [AuthService],
+  exports: [AuthService, RefreshTokenService],
 })
 export class AuthModule {}

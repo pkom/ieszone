@@ -23,11 +23,11 @@ export class User extends BaseEntity {
   userName: string;
 
   @Exclude()
-  @Column({ type: 'varchar', length: 25 })
+  @Column({ type: 'varchar', length: 25, nullable: true })
   uidNumber: string;
 
   @Exclude()
-  @Column({ type: 'varchar', length: 25 })
+  @Column({ type: 'varchar', length: 25, nullable: true })
   gidNumber: string;
 
   @Column({ type: 'varchar', length: 100, nullable: true })
@@ -36,7 +36,7 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar', length: 50, nullable: true })
   firstName: string;
 
-  @Column({ type: 'varchar', length: 25 })
+  @Column({ type: 'varchar', length: 25, nullable: true })
   employeeNumber: string;
 
   @Exclude()
@@ -47,7 +47,7 @@ export class User extends BaseEntity {
   email: string;
 
   @Exclude()
-  @Column({ type: 'varchar', length: 50, nullable: true })
+  @Column({ nullable: true })
   password: string;
 
   @OneToOne(() => Student, { eager: true })

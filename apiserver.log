@@ -182,3 +182,65 @@
 {"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T00:28:26.960Z"}
 {"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-09T00:28:27.097Z"}
 {"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-09T00:28:27.165Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-09T20:23:31.262Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T20:23:31.274Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-09T20:23:56.552Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T20:23:56.555Z"}
+{"message":"User administrativo has been created","level":"debug","timestamp":"2021-01-09T20:23:56.608Z"}
+{"message":"Role ADMINISTRATION created","level":"debug","timestamp":"2021-01-09T20:23:56.650Z"}
+{"message":"Role TEACHER created","level":"debug","timestamp":"2021-01-09T20:23:56.680Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-09T20:23:56.767Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-09T20:25:04.052Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T20:25:04.066Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-09T20:25:04.276Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-09T20:25:04.380Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-09T20:26:52.572Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T20:26:52.594Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-09T20:26:52.761Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-09T20:26:52.863Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-09T20:28:26.604Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T20:28:26.611Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-09T20:28:26.813Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-09T20:28:26.888Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-09T20:37:04.801Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T20:37:04.814Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-09T20:37:04.937Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-09T20:37:05.043Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-09T20:47:46.753Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T20:47:46.759Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-09T20:47:46.857Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-09T20:47:47.049Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-09T21:05:55.227Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T21:05:55.229Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-09T21:05:55.293Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-09T21:05:55.399Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-09T21:19:55.940Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T21:19:55.947Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-09T21:19:56.067Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-09T21:19:56.151Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-09T21:21:45.855Z"}
+{"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T21:21:45.856Z"}
+{"message":"User profesor has been created","level":"debug","timestamp":"2021-01-09T21:21:45.910Z"}
+{"message":"Token generated for user profesor","level":"debug","timestamp":"2021-01-09T21:21:45.972Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-09T21:22:18.594Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T21:22:18.595Z"}
+{"message":"User fmoras01 has been created","level":"debug","timestamp":"2021-01-09T21:22:18.634Z"}
+{"message":"Role ADMINISTRATOR created","level":"debug","timestamp":"2021-01-09T21:22:18.654Z"}
+{"message":"Role RESPONSIBLE created","level":"debug","timestamp":"2021-01-09T21:22:18.671Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-09T21:22:18.711Z"}
+{"message":"Authenticating ldap user profesor","level":"debug","timestamp":"2021-01-09T21:23:11.887Z"}
+{"message":"user profesor has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T21:23:11.888Z"}
+{"message":"User profesor has been updated","level":"debug","timestamp":"2021-01-09T21:23:12.035Z"}
+{"message":"Token generated for user profesor","level":"debug","timestamp":"2021-01-09T21:23:12.115Z"}
+{"message":"Authenticating ldap user administrativo","level":"debug","timestamp":"2021-01-09T21:25:35.756Z"}
+{"message":"user administrativo has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T21:25:35.757Z"}
+{"message":"User administrativo has been updated","level":"debug","timestamp":"2021-01-09T21:25:35.871Z"}
+{"message":"Token generated for user administrativo","level":"debug","timestamp":"2021-01-09T21:25:35.955Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-09T21:26:06.782Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T21:26:06.783Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-09T21:26:06.866Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-09T21:26:06.930Z"}
+{"message":"Authenticating ldap user fmoras01","level":"debug","timestamp":"2021-01-09T21:27:14.072Z"}
+{"message":"user fmoras01 has been authenticated by ldap server","level":"debug","timestamp":"2021-01-09T21:27:14.079Z"}
+{"message":"User fmoras01 has been updated","level":"debug","timestamp":"2021-01-09T21:27:14.198Z"}
+{"message":"Token generated for user fmoras01","level":"debug","timestamp":"2021-01-09T21:27:14.314Z"}

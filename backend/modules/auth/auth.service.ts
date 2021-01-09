@@ -4,7 +4,6 @@ import {
   InternalServerErrorException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { UserDto } from '../users/dto/user.dto';
@@ -20,7 +19,10 @@ import { RolesRepository } from '../roles/roles.repository';
 import { Repository } from 'typeorm';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
-import { ResponseTokenDto } from './dto/response-token.dto';
+import { RefreshTokenService } from './refresh-token.service';
+import { AuthenticationPayload } from './dto/response-token.dto';
+import { classToPlain } from 'class-transformer';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -34,13 +36,10 @@ export class AuthService {
     private readonly teachersRepository: TeachersRepository,
     @InjectRepository(RolesRepository)
     private readonly rolesRepository: RolesRepository,
-    private readonly jwtService: JwtService,
+    private readonly refreshTokenService: RefreshTokenService,
   ) {}
 
-  async validateLdapLogin(
-    userDto: UserDto,
-    courseId: string,
-  ): Promise<ResponseTokenDto> {
+  async validateLdapLogin(userDto: UserDto, courseId: string) {
     const course = await this.coursesRepository.findOne(courseId);
     if (!course) {
       throw new UnauthorizedException(
@@ -68,16 +67,39 @@ export class AuthService {
         user = await this.usersRepository.save(user);
       }
 
-      const payload: JwtPayload = {
-        username: user.userName,
-        sub: user.id,
-        courseid: courseId,
-        roles: user.roles.map((role) => role.name as UserRole),
-      };
+      // const payload: JwtPayload = {
+      //   username: user.userName,
+      //   sub: user.id,
+      //   courseid: courseId,
+      //   roles: user.roles.map((role) => role.name as UserRole),
+      // };
+      const roles = user.roles.map((role) => role.name as UserRole);
+      const accessToken = await this.refreshTokenService.generateAccessToken(
+        user,
+      );
+      const refreshToken = await this.refreshTokenService.generateRefreshToken(
+        user,
+        60 * 60 * 24 * 30,
+      );
+
+      const payload: AuthenticationPayload = this.buildResponsePayload(
+        user,
+        courseId,
+        roles,
+        accessToken,
+        refreshToken,
+      );
+
       this.logger.debug(`Token generated for user ${user.userName}`);
+
       return {
-        token: this.jwtService.sign(payload),
+        status: 'success',
+        ...payload,
       };
+
+      // return {
+      //   token: this.jwtService.sign(payload),
+      // };
     } catch (error) {
       this.logger.error(
         `Error generating token for user ${userDto.userName}`,
@@ -148,8 +170,31 @@ export class AuthService {
   }
 
   async validateUser(payload: JwtPayload) {
-    // const user = await this.usersService.getById(payload.sub);
-    // const userr = classToPlain(user);
-    return payload;
+    const user = classToPlain(
+      await this.usersRepository.findOne(payload.sub, {
+        relations: ['roles'],
+      }),
+    );
+    user.roles = user.roles.map((role) => role.name);
+    return user;
+  }
+
+  private buildResponsePayload(
+    user: User,
+    courseId: string,
+    roles: UserRole[],
+    accessToken: string,
+    refreshToken?: string,
+  ): AuthenticationPayload {
+    return {
+      user: classToPlain(user),
+      courseId,
+      roles,
+      payload: {
+        type: 'bearer',
+        token: accessToken,
+        ...(refreshToken ? { refresh_token: refreshToken } : {}),
+      },
+    };
   }
 }

@@ -1,5 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { RegisterRequest } from '../auth/dto/register-user.dto';
+import { User } from './entities/user.entity';
 
 import { UsersRepository } from './users.repository';
 
@@ -8,22 +10,36 @@ export class UsersService {
   constructor(
     @InjectRepository(UsersRepository)
     private readonly usersRepository: UsersRepository,
-  ) {
-    //   public async create(userDTO: UserDTO): Promise<User> {
-    //     return await this.save(userDTO);
-    //   }
-    //   public async update(id: string, userDTO: UserDTO): Promise<User> {
-    //     await this.update(id, userDTO);
-    //     return await this.getById(id);
-    //   }
-    //   public async save(user: User): Promise<User> {
-    //     await this.save(user);
-    //     return await this.getById(user.id);
-    //   }
-    //   public async delete(id: string): Promise<void> {
-    //     const user = await this.findOne(id);
-    //     user.isActive = false;
-    //     await this.save(user);
-    //   }
+  ) {}
+  public async createUserFromRequest(request: RegisterRequest): Promise<User> {
+    const { username, password } = request;
+
+    const existingFromUsername = await this.usersRepository.findOne({
+      where: {
+        userName: request.username,
+      },
+    });
+
+    if (existingFromUsername) {
+      throw new ConflictException('Username already in use');
+    }
+
+    return this.usersRepository.createUser(username, password);
+  }
+
+  public async findForId(id: string): Promise<User | null> {
+    return this.usersRepository.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
+  public async findForUsername(username: string): Promise<User | null> {
+    return this.usersRepository.findOne({
+      where: {
+        userName: username,
+      },
+    });
   }
 }

@@ -11,13 +11,18 @@ import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
 import { TimeoutInterceptor } from './shared/interceptors/timeout.interceptor';
 import { TransformInterceptor } from './shared/interceptors/transform.interceptor';
 import { TypeORMExceptionFilter } from './shared/filters/typeorm-exception.filter';
+import { JWTExceptionFilter } from './shared/filters/jwt-exception.filter';
 
 async function bootstrap() {
   const logger = new Logger('NestApplication');
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
 
-  app.useGlobalFilters(new HttpExceptionFilter(), new TypeORMExceptionFilter());
+  app.useGlobalFilters(
+    new HttpExceptionFilter(),
+    new TypeORMExceptionFilter(),
+    new JWTExceptionFilter(),
+  );
   app.useGlobalInterceptors(
     new TimeoutInterceptor(),
     new TransformInterceptor(),

@@ -1,3 +1,5 @@
+import { hash } from 'bcrypt';
+
 import { EntityRepository, Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 
@@ -14,5 +16,14 @@ export class UsersRepository extends Repository<User> {
     return await this.findOne(id, {
       relations: ['roles', 'student', 'teacher'],
     });
+  }
+
+  public async createUser(username: string, password: string): Promise<User> {
+    const user = new User();
+
+    user.userName = username;
+    user.password = await hash(password, 10);
+
+    return this.save(user);
   }
 }

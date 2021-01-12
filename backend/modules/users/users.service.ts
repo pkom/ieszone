@@ -1,4 +1,8 @@
-import { Injectable, ConflictException } from '@nestjs/common';
+import {
+  Injectable,
+  ConflictException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RegisterRequest } from '../auth/dto/register-user.dto';
 import { User } from './entities/user.entity';
@@ -41,5 +45,9 @@ export class UsersService {
         userName: username,
       },
     });
+  }
+
+  public async setAvatar(userId: string, avatarUrl: string) {
+    this.usersRepository.update(userId, { avatar: avatarUrl });
   }
 }

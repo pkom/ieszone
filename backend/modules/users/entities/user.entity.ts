@@ -50,6 +50,9 @@ export class User extends BaseEntity {
   @Column({ nullable: true })
   password: string;
 
+  @Column({ default: '' })
+  avatar: string;
+
   @OneToOne(() => Student, { eager: true })
   @JoinColumn({ name: 'student_id' })
   student: Student;

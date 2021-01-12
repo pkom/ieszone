@@ -3,15 +3,12 @@ import {
   Get,
   Post,
   Body,
-  UsePipes,
-  ValidationPipe,
   UseGuards,
   Delete,
   Param,
   UseInterceptors,
   ClassSerializerInterceptor,
   ParseUUIDPipe,
-  NotFoundException,
   Patch,
   Inject,
 } from '@nestjs/common';
@@ -21,7 +18,6 @@ import { JwtAuthGuard } from '../../shared/guards/jwt-auth.guard';
 import { UserRole } from '@iz/enum';
 import { RolesGuard } from '../../shared/guards/roles.guard';
 import { Roles } from '../../shared/decorators/roles.decorator';
-import { Center } from './entities/center.entity';
 import { UpdateCenterDto } from './dto/update-center.dto';
 import { Logger } from 'winston';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';

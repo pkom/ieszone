@@ -2,9 +2,9 @@ import {
   Injectable,
   ConflictException,
   NotFoundException,
+  BadRequestException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { from, Observable, of } from 'rxjs';
 
 import { Repository } from 'typeorm';
 import { Course } from '../courses/entities/course.entity';
@@ -22,47 +22,51 @@ export class ConfigurationService {
     private readonly coursesRepository: Repository<Course>,
   ) {}
 
-  get(): Observable<Configuration> {
-    return from(
-      this.configurationRepository.findOne({
-        where: {
-          isActive: true,
-        },
-      }),
+  async get(): Promise<Configuration> {
+    const configuration = await this.configurationRepository.findOne({
+      where: {
+        isActive: true,
+      },
+    });
+    if (!configuration) {
+      throw new NotFoundException('Configuration not found');
+    }
+    return configuration;
+  }
+
+  async create(
+    createConfigurationDto: CreateConfigurationDto,
+  ): Promise<Configuration> {
+    const configuration = await this.get();
+    if (configuration) {
+      throw new ConflictException('Configuration already exists');
+    }
+    return this.configurationRepository.save(
+      this.configurationRepository.create(createConfigurationDto),
     );
   }
 
-  create(createConfigurationDto: CreateConfigurationDto): Observable<any> {
-    console.info(createConfigurationDto);
-    return from(
-      this.configurationRepository.save(
-        this.configurationRepository.create(createConfigurationDto),
-      ),
-    );
+  async update(
+    updateConfigurationDto: UpdateConfigurationDto,
+  ): Promise<Configuration> {
+    const configuration = await this.get();
+    await this.configurationRepository.update(configuration.id, {
+      ...updateConfigurationDto,
+    });
+    return this.get();
   }
 
-  update(updateConfigurationDto: UpdateConfigurationDto): Observable<any> {
-    return from(
-      this.configurationRepository.findOne().then((configuration) => {
-        this.configurationRepository.update(configuration.id, {
-          ...updateConfigurationDto,
-        });
-      }),
-    );
-  }
-
-  setDefaultCourse(courseId: string): Observable<any> {
-    return from(
-      this.configurationRepository.findOne().then((configuration) => {
-        this.coursesRepository
-          .findOne({ id: courseId, isActive: true })
-          .then((course) => {
-            configuration.defaultCourse = course;
-            this.configurationRepository.update(configuration.id, {
-              ...configuration,
-            });
-          });
-      }),
-    );
+  async setDefaultCourse(courseId: string): Promise<Configuration> {
+    const configuration = await this.get();
+    const course = await this.coursesRepository.findOne(courseId, {
+      where: {
+        isActive: true,
+      },
+    });
+    if (!course) {
+      throw new BadRequestException('Course does not exist');
+    }
+    configuration.defaultCourse = course;
+    return await this.configurationRepository.save(configuration);
   }
 }

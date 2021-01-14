@@ -28,7 +28,6 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { Observable } from 'rxjs';
 
 const name = 'configuration';
 @UseInterceptors(ClassSerializerInterceptor)
@@ -39,7 +38,7 @@ export class ConfigurationController {
 
   @Get()
   @ApiOkResponse({ description: 'Configuration has been successfully read' })
-  public get(): Observable<Configuration> {
+  public get(): Promise<Configuration> {
     return this.configurationService.get();
   }
 
@@ -63,7 +62,7 @@ export class ConfigurationController {
   @Roles(UserRole.ADMINISTRATOR)
   public create(
     @Body() createConfigurationDto: CreateConfigurationDto,
-  ): Observable<Configuration> {
+  ): Promise<Configuration> {
     return this.configurationService.create(createConfigurationDto);
   }
 
@@ -84,7 +83,7 @@ export class ConfigurationController {
   @Roles(UserRole.ADMINISTRATOR)
   public update(
     @Body() updateConfigurationDto: UpdateConfigurationDto,
-  ): Observable<any> {
+  ): Promise<Configuration> {
     return this.configurationService.update(updateConfigurationDto);
   }
 
@@ -105,7 +104,7 @@ export class ConfigurationController {
   @Roles(UserRole.ADMINISTRATOR)
   public setDefaultCourse(
     @Param('courseId', ParseUUIDPipe) courseId: string,
-  ): Observable<Configuration> {
+  ): Promise<Configuration> {
     return this.configurationService.setDefaultCourse(courseId);
   }
 }

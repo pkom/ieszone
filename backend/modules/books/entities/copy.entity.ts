@@ -7,7 +7,7 @@ import { CopyStatus } from '@iz/enum';
 
 @Entity('copies')
 export class Copy extends BaseEntity {
-  @Column()
+  @Column({ default: CopyStatus.AVAILABLE })
   status: CopyStatus;
 
   @Column()

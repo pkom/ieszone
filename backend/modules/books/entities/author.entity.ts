@@ -15,7 +15,7 @@ export class Author extends BaseEntity {
   name: string;
 
   @Exclude()
-  @Column({ unique: true })
+  @Column({ name: 'name_lowercase', unique: true })
   nameLowerCased: string;
 
   @ManyToMany((type) => Book, (book) => book.authors)

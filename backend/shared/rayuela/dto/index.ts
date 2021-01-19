@@ -170,16 +170,16 @@ export interface BookDTO {
   libros: string;
   anio_edicion: string;
   isbn: string;
-  numero_ejemplares: string;
-  precio: string;
-  fecha_inicio: string;
-  fecha_fin: string;
-  codigo_barras: string;
+  numero_ejemplares: number;
+  precio: number;
+  fecha_inicio: Date;
+  fecha_fin: Date;
+  codigo_barras_libro: string;
   codigo_barras_ejemplar: string;
   estado: string;
   area: string;
   autor: string;
   editorial: string;
-  nivel: string;
+  nivel: number;
   ciclo: string;
 }

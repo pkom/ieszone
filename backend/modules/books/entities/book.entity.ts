@@ -18,7 +18,7 @@ export class Book extends BaseEntity {
   @Column()
   title: string;
 
-  @Column({ unique: true, nullable: true })
+  @Column({ nullable: true })
   isbn: string;
 
   @Column({ unique: true, nullable: true })
@@ -26,6 +26,12 @@ export class Book extends BaseEntity {
 
   @Column({ nullable: true })
   year: number;
+
+  @Column({ name: 'start_date', nullable: true, type: 'timestamptz' })
+  startDate: Date;
+
+  @Column({ name: 'end_date', nullable: true, type: 'timestamptz' })
+  endDate: Date;
 
   @Column({ default: 0 })
   stock: number;

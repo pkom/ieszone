@@ -1,14 +1,13 @@
-import * as XLSX from 'xlsx';
-const {
-  read,
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  utils: { sheet_to_json },
-} = XLSX;
+import csvtojson from 'csvtojson';
 
 import { Connection } from 'typeorm';
+import { Author } from '../../../modules/books/entities/author.entity';
+import { Book } from '../../../modules/books/entities/book.entity';
+import { Copy } from '../../../modules/books/entities/copy.entity';
+import { Publisher } from '../../../modules/books/entities/publisher.entity';
 
 import { BookDTO } from '../dto';
-import { resolve } from 'path';
+import { CopyStatus } from '../../../enums/copy-status.enum';
 
 export class ImportBooks {
   private booksDTO: BookDTO[] = [];
@@ -18,30 +17,48 @@ export class ImportBooks {
     private readonly connection: Connection,
   ) {}
 
-  private readFirstSheetStudents(
-    data: any,
-    options: XLSX.ParsingOptions,
-  ): BookDTO[] {
-    const wb: XLSX.WorkBook = read(data, options);
-    const ws: XLSX.WorkSheet = wb.Sheets[wb.SheetNames[0]];
-    return sheet_to_json(ws, { range: 4 });
-  }
-
   async processBooks(): Promise<void> {
-    this.booksDTO = this.readFirstSheetStudents(this.booksDataCsvFile, {
-      type: 'file',
-      cellDates: true,
-    });
+    this.booksDTO = await csvtojson().fromFile(this.booksDataCsvFile);
   }
 
   async processBook(bookDTO: BookDTO): Promise<any> {
-    return await new Promise((resolve) => resolve(bookDTO));
-    // console.info(`Processing book ${bookDTO.libros}`);
-    // const studentRepo = this.connection.getRepository(Student);
-    // const parentRepo = this.connection.getRepository(Parent);
-    // const student = await studentRepo.findOne({
-    //   nie: studentDTO['Nº Id. Escolar'],
-    // });
+    const bookRepo = this.connection.getRepository(Book);
+    const copyRepo = this.connection.getRepository(Copy);
+    const authorRepo = this.connection.getRepository(Author);
+    const publisherRepo = this.connection.getRepository(Publisher);
+    const bookDB = await bookRepo.findOne(
+      {
+        barcode: bookDTO['codigo_barras_libro'],
+      },
+      { relations: ['copies'] },
+    );
+    const book = new Book();
+    book.title = bookDTO.libros;
+    book.isbn = bookDTO.isbn;
+    book.barcode = bookDTO.codigo_barras_libro;
+    book.year = +bookDTO.anio_edicion || 0;
+    book.startDate = new Date(bookDTO.fecha_inicio);
+    book.endDate = new Date(bookDTO.fecha_fin);
+    book.stock = +bookDTO.numero_ejemplares || 0;
+    book.price = +bookDTO.precio || 0;
+    if (!bookDB) {
+      await bookRepo.save(bookRepo.create(book));
+    } else {
+      await bookRepo.update(bookDB.id, { ...book });
+    }
+    const copyDB = await copyRepo.findOne({
+      barcode: bookDTO.codigo_barras_ejemplar,
+    });
+    const copy = new Copy();
+    copy.barcode = bookDTO.codigo_barras_ejemplar;
+    copy.status = CopyStatus.AVAILABLE;
+    copy.book = bookDB;
+    if (!copyDB) {
+      await copyRepo.save(copyRepo.create(copy));
+    } else {
+      await copyRepo.update(copyDB.id, { ...copy });
+    }
+    // console.info(JSON.stringify(bookDB, null, 4));
     // const parent1 = new Parent();
     // const parent2 = new Parent();
     // parent1.middleName = studentDTO['Primer apellido Primer tutor'];

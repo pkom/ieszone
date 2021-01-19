@@ -164,3 +164,22 @@ export interface Coordinate {
   latitude?: number;
   longitude?: number;
 }
+
+export interface BookDTO {
+  id: number;
+  libros: string;
+  anio_edicion: string;
+  isbn: string;
+  numero_ejemplares: string;
+  precio: string;
+  fecha_inicio: string;
+  fecha_fin: string;
+  codigo_barras: string;
+  codigo_barras_ejemplar: string;
+  estado: string;
+  area: string;
+  autor: string;
+  editorial: string;
+  nivel: string;
+  ciclo: string;
+}

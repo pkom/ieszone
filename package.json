@@ -19,6 +19,8 @@
     "typeorm:migration:drop": "yarn run typeorm schema:drop",
     "rayuela": "node dist/api/scripts/rayuela.js",
     "rayuela:dev": "ts-node -P tsconfig.server.json -r tsconfig-paths/register backend/scripts/rayuela.ts",
+    "books": "node dist/api/scripts/import-books.js",
+    "books:dev": "ts-node -P tsconfig.server.json -r tsconfig-paths/register backend/scripts/import-books.ts",
     "lint": "eslint \"{backend,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",

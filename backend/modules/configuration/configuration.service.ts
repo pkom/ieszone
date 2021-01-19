@@ -22,12 +22,17 @@ export class ConfigurationService {
     private readonly coursesRepository: Repository<Course>,
   ) {}
 
-  async get(): Promise<Configuration> {
+  async getConfiguration(): Promise<Configuration | undefined> {
     const configuration = await this.configurationRepository.findOne({
       where: {
         isActive: true,
       },
     });
+    return configuration;
+  }
+
+  async get(): Promise<Configuration> {
+    const configuration = await this.getConfiguration();
     if (!configuration) {
       throw new NotFoundException('Configuration not found');
     }
@@ -37,7 +42,7 @@ export class ConfigurationService {
   async create(
     createConfigurationDto: CreateConfigurationDto,
   ): Promise<Configuration> {
-    const configuration = await this.get();
+    const configuration = await this.getConfiguration();
     if (configuration) {
       throw new ConflictException('Configuration already exists');
     }

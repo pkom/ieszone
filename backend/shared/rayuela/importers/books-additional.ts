@@ -34,24 +34,20 @@ export class ImportBooks {
     const authorDB = await authorRepo.findOne({
       name: bookDTO.autor,
     });
-    if (!authorDB) {
-      author = await authorRepo.save(authorRepo.create(author));
-    } else {
-      await authorRepo.update(authorDB.id, { ...author });
-      author = await authorRepo.findOne(authorDB.id);
+    if (authorDB) {
+      author.id = authorDB.id;
     }
+    author = await this.connection.manager.save(author);
 
     let publisher = new Publisher();
     publisher.name = bookDTO.editorial;
     const publisherDB = await publisherRepo.findOne({
       name: bookDTO.editorial,
     });
-    if (!publisherDB) {
-      publisher = await publisherRepo.save(publisherRepo.create(publisher));
-    } else {
-      await publisherRepo.update(publisherDB.id, { ...publisher });
-      publisher = await publisherRepo.findOne(publisherDB.id);
+    if (publisherDB) {
+      publisher.id = publisherDB.id;
     }
+    publisher = await this.connection.manager.save(publisher);
 
     const level = await levelRepo.findOne({
       level: `${bookDTO.nivel}º E.S.O.`,
@@ -72,25 +68,22 @@ export class ImportBooks {
     book.publisher = publisher;
     book.level = level || null;
     book.authors = [author];
-    if (!bookDB) {
-      book = await bookRepo.save(bookRepo.create(book));
-    } else {
-      await bookRepo.update(bookDB.id, { ...book });
-      book = await bookRepo.findOne(bookDB.id);
+    if (bookDB) {
+      book.id = bookDB.id;
     }
+    book = await this.connection.manager.save(book);
 
     const copyDB = await copyRepo.findOne({
       barcode: bookDTO.codigo_barras_ejemplar,
     });
-    let copy = new Copy();
+    const copy = new Copy();
     copy.barcode = bookDTO.codigo_barras_ejemplar;
     copy.status = CopyStatus.AVAILABLE;
     copy.book = book;
-    if (!copyDB) {
-      copy = await copyRepo.save(copyRepo.create(copy));
-    } else {
-      await copyRepo.update(copyDB.id, { ...copy });
+    if (copyDB) {
+      copy.id = copyDB.id;
     }
+    await this.connection.manager.save(copy);
   }
 
   getBooksDTO(): BookDTO[] {

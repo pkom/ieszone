@@ -3,17 +3,20 @@ import {
   Injectable,
   NotFoundException,
   ConflictException,
+  BadRequestException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Repository, UpdateResult } from 'typeorm';
 import { Logger } from 'winston';
+import { CopyStatus } from '../../enums';
 import { Department } from '../departments/entities/department.entity';
 import { Level } from '../levels/entities/level.entity';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { Author } from './entities/author.entity';
 import { Book } from './entities/book.entity';
+import { Copy } from './entities/copy.entity';
 import { Publisher } from './entities/publisher.entity';
 
 @Injectable()
@@ -29,11 +32,13 @@ export class BooksService {
     private readonly levelRepository: Repository<Level>,
     @InjectRepository(Department)
     private readonly departmentRepository: Repository<Department>,
+    @InjectRepository(Copy)
+    private readonly copyRepository: Repository<Copy>,
   ) {}
 
   findAll(): Promise<Book[]> {
     return this.bookRepository.find({
-      relations: ['authors', 'publisher', 'level', 'department'],
+      relations: ['authors', 'publisher', 'level', 'department', 'copies'],
       where: {
         isActive: true,
       },
@@ -44,7 +49,7 @@ export class BooksService {
     const book = await this.bookRepository.findOne(
       { id, isActive: true },
       {
-        relations: ['authors', 'publisher', 'level', 'department'],
+        relations: ['authors', 'publisher', 'level', 'department', 'copies'],
       },
     );
     if (!book) {
@@ -77,7 +82,7 @@ export class BooksService {
       throw new NotFoundException(`Book not found or deactivated`);
     }
     return this.bookRepository.findOne(id, {
-      relations: ['authors', 'publisher', 'level', 'department'],
+      relations: ['authors', 'publisher', 'level', 'department', 'copies'],
     });
   }
 
@@ -105,7 +110,7 @@ export class BooksService {
         isActive: true,
       },
       {
-        relations: ['authors', 'publisher'],
+        relations: ['authors', 'publisher', 'level', 'department', 'copies'],
       },
     );
     if (!book) {
@@ -126,7 +131,44 @@ export class BooksService {
     return this.bookRepository.save(book);
   }
 
-  async addPublisher(bookId: string, publisherId: string): Promise<Book> {
+  async addCopy(bookId: string, numCopies = 1): Promise<Book> {
+    if (numCopies > 20) {
+      throw new BadRequestException(
+        'A maximum of 20 copies can be added per request',
+      );
+    }
+    const book = await this.bookRepository.findOne(
+      {
+        id: bookId,
+        isActive: true,
+      },
+      {
+        relations: ['authors', 'publisher', 'level', 'department', 'copies'],
+      },
+    );
+    if (!book) {
+      throw new NotFoundException('Book not found or deactivated');
+    }
+    if (!book.barcode) {
+      throw new BadRequestException('Book must have a barcode');
+    }
+    const firstCopy = book.stock + 1 || 1;
+    for (let i = firstCopy; i <= numCopies; i++) {
+      const copy = new Copy();
+      copy.barcode = this.generateBarcode(book.barcode, i);
+      copy.status = CopyStatus.AVAILABLE;
+      await this.copyRepository.save(copy);
+      book.copies.push(copy);
+    }
+    return this.bookRepository.save(book);
+  }
+
+  private generateBarcode(barcode: string, i: number): string {
+    const iStr = i.toString();
+    return `${barcode}${iStr.padStart(4, '0')}`;
+  }
+
+  async setPublisher(bookId: string, publisherId: string): Promise<Book> {
     const book = await this.bookRepository.findOne(
       {
         id: bookId,
@@ -153,7 +195,7 @@ export class BooksService {
     return this.bookRepository.save(book);
   }
 
-  async addLevel(bookId: string, levelId: string): Promise<Book> {
+  async setLevel(bookId: string, levelId: string): Promise<Book> {
     const book = await this.bookRepository.findOne(
       {
         id: bookId,
@@ -180,7 +222,7 @@ export class BooksService {
     return this.bookRepository.save(book);
   }
 
-  async addDepartment(bookId: string, departmentId: string): Promise<Book> {
+  async setDepartment(bookId: string, departmentId: string): Promise<Book> {
     const book = await this.bookRepository.findOne(
       {
         id: bookId,

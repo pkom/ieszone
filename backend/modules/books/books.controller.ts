@@ -10,6 +10,7 @@ import {
   ParseUUIDPipe,
   Patch,
   UseGuards,
+  ParseIntPipe,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -151,7 +152,33 @@ export class BooksController {
     return this.booksService.addAuthor(bookId, authorId);
   }
 
-  @Post(':bookId/addpublisher/:publisherId')
+  @Post(':bookId/addcopy/:numCopies')
+  @ApiBearerAuth()
+  @ApiCreatedResponse({
+    description: 'Copies has been succesully added to book',
+  })
+  @ApiBadRequestResponse({ description: 'Bad request' })
+  @ApiNotFoundResponse({
+    description: 'Book does not exist or has been deactivated',
+  })
+  @ApiUnauthorizedResponse({
+    description:
+      'Only authenticated administrators and administration staff are allowed to add authors to books',
+  })
+  @ApiForbiddenResponse({
+    description:
+      'Only authenticated administrators and administration staff are allowed to add authors to books',
+  })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMINISTRATOR, UserRole.ADMINISTRATION)
+  addCopy(
+    @Param('bookId', ParseUUIDPipe) bookId: string,
+    @Param('numCopies', ParseIntPipe) numCopies: number,
+  ) {
+    return this.booksService.addCopy(bookId, numCopies);
+  }
+
+  @Post(':bookId/setpublisher/:publisherId')
   @ApiBearerAuth()
   @ApiCreatedResponse({
     description: 'Publisher has been succesully added to book',
@@ -175,10 +202,10 @@ export class BooksController {
     @Param('bookId', ParseUUIDPipe) bookId: string,
     @Param('publisherId', ParseUUIDPipe) publisherId: string,
   ) {
-    return this.booksService.addPublisher(bookId, publisherId);
+    return this.booksService.setPublisher(bookId, publisherId);
   }
 
-  @Post(':bookId/addlevel/:levelId')
+  @Post(':bookId/setlevel/:levelId')
   @ApiBearerAuth()
   @ApiCreatedResponse({
     description: 'Level has been succesully added to book',
@@ -202,10 +229,10 @@ export class BooksController {
     @Param('bookId', ParseUUIDPipe) bookId: string,
     @Param('levelId', ParseUUIDPipe) levelId: string,
   ) {
-    return this.booksService.addLevel(bookId, levelId);
+    return this.booksService.setLevel(bookId, levelId);
   }
 
-  @Post(':bookId/adddepartment/:departmentId')
+  @Post(':bookId/setdepartment/:departmentId')
   @ApiBearerAuth()
   @ApiCreatedResponse({
     description: 'Department has been succesully added to book',
@@ -229,6 +256,6 @@ export class BooksController {
     @Param('bookId', ParseUUIDPipe) bookId: string,
     @Param('departmentId', ParseUUIDPipe) departmentId: string,
   ) {
-    return this.booksService.addDepartment(bookId, departmentId);
+    return this.booksService.setDepartment(bookId, departmentId);
   }
 }

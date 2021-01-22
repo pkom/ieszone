@@ -42,6 +42,8 @@ export class BooksController {
 
   @Get()
   @ApiOkResponse({ description: 'Books have been successfully read' })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMINISTRATOR, UserRole.ADMINISTRATION)
   findAll(): Promise<Book[]> {
     return this.booksService.findAll();
   }
@@ -52,8 +54,22 @@ export class BooksController {
   @ApiNotFoundResponse({
     description: 'Book does not exist or has been deactivated',
   })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMINISTRATOR, UserRole.ADMINISTRATION)
   findOne(@Param('id', ParseUUIDPipe) id: string): Promise<Book> {
     return this.booksService.findOne(id);
+  }
+
+  @Get(':id/copies')
+  @ApiOkResponse({ description: 'Book has been successfully read' })
+  @ApiBadRequestResponse({ description: 'Bad request' })
+  @ApiNotFoundResponse({
+    description: 'Book does not exist or has been deactivated',
+  })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMINISTRATOR, UserRole.ADMINISTRATION)
+  findOneWithCopies(@Param('id', ParseUUIDPipe) id: string): Promise<Book> {
+    return this.booksService.findOneWithCopies(id);
   }
 
   @Post()

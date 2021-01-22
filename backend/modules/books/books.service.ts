@@ -38,7 +38,7 @@ export class BooksService {
 
   findAll(): Promise<Book[]> {
     return this.bookRepository.find({
-      relations: ['authors', 'publisher', 'level', 'department', 'copies'],
+      relations: ['authors', 'publisher', 'level', 'department'],
       where: {
         isActive: true,
       },
@@ -46,6 +46,19 @@ export class BooksService {
   }
 
   async findOne(id: string): Promise<Book> {
+    const book = await this.bookRepository.findOne(
+      { id, isActive: true },
+      {
+        relations: ['authors', 'publisher', 'level', 'department'],
+      },
+    );
+    if (!book) {
+      throw new NotFoundException(`Book not found or deactivated`);
+    }
+    return book;
+  }
+
+  async findOneWithCopies(id: string): Promise<Book> {
     const book = await this.bookRepository.findOne(
       { id, isActive: true },
       {
@@ -82,7 +95,7 @@ export class BooksService {
       throw new NotFoundException(`Book not found or deactivated`);
     }
     return this.bookRepository.findOne(id, {
-      relations: ['authors', 'publisher', 'level', 'department', 'copies'],
+      relations: ['authors', 'publisher', 'level', 'department'],
     });
   }
 
@@ -110,7 +123,7 @@ export class BooksService {
         isActive: true,
       },
       {
-        relations: ['authors', 'publisher', 'level', 'department', 'copies'],
+        relations: ['authors', 'publisher', 'level', 'department'],
       },
     );
     if (!book) {
@@ -143,7 +156,7 @@ export class BooksService {
         isActive: true,
       },
       {
-        relations: ['authors', 'publisher', 'level', 'department', 'copies'],
+        relations: ['authors', 'publisher', 'level', 'department'],
       },
     );
     if (!book) {

@@ -25,7 +25,7 @@ async function bootstrap() {
   );
   app.useGlobalInterceptors(
     new TimeoutInterceptor(),
-    new TransformInterceptor(),
+    // new TransformInterceptor(),
   );
   app.useGlobalPipes(
     new ValidationPipe({
@@ -58,8 +58,8 @@ async function bootstrap() {
     app.use(compression());
     app.use(helmet());
     app.use(csurf());
-    app.enableCors();
   }
+  app.enableCors();
   await app.listen(port, () => {
     logger.log(`${appName} is running in ${mode.toUpperCase()} mode`);
     logger.log(`${appName} is running on http://localhost:${port}/${version}`);

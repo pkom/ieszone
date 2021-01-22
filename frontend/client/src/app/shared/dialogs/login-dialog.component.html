@@ -1,0 +1,32 @@
+<h3 mat-dialog-title>Acceso</h3>
+<mat-dialog-content>
+  <mat-form-field>
+    <input [(ngModel)]="username" matInput placeholder="Usuario" type="text" />
+    <button
+      (click)="username = undefined"
+      *ngIf="username"
+      aria-label="Clear"
+      cdkFocusInitial
+      mat-button
+      mat-icon-button
+      matSuffix
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      [(ngModel)]="password"
+      matInput
+      placeholder="Contraseña"
+      type="password"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="courseid" matInput placeholder="Curso" type="text" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="login()" mat-button>Submit</button>
+</mat-dialog-actions>

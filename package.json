@@ -1,6 +1,6 @@
 {
-  "name": "school",
-  "version": "0.0.0",
+  "name": "ieszone",
+  "version": "0.0.1",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -9,7 +9,7 @@
     "start:dev:db:seed": "ts-node -P tsconfig.server.json -r tsconfig-paths/register ./backend/scripts/seed.ts",
     "start:client": "ng serve",
     "start:server": "nest start --watch",
-    "start": "concurrently -c \"green.bold,blue.bold\" -n \"API,SCHOOL\" \"yarn start:server\" \"yarn start:client --verbose=false\"",
+    "start": "concurrently -c \"green.bold,blue.bold\" -n \"API,CLIENT\" \"yarn start:server\" \"yarn start:client --verbose=false\"",
     "start:prod": "node dist/api/main",
     "pretypeorm": "(rm ormconfig.json || :) && ts-node -P tsconfig.server.json -r tsconfig-paths/register ./backend/scripts/write-type-orm-config.ts",
     "typeorm": "ts-node -P tsconfig.server.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js",

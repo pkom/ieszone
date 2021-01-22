@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "resolveJsonModule": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -37,7 +38,10 @@
         "backend/shared/decorators",
         "backend/shared/filters",
         "backend/shared/guards"
-      ]
+      ],
+      "@env": ["frontend/client/src/environments/environment"],
+      "@shared/*": ["frontend/client/src/app/shared/*"],
+      "@core/*": ["frontend/client/src/app/core/*"]      
     }
   },
   "exclude": [

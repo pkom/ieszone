@@ -70,7 +70,16 @@ export class AuthService {
   }
 
   hasRoles(roles: Role[]): boolean {
-    return this.isAuthenticated() && roles.includes(this.user.role);
+    //return this.isAuthenticated() && roles.includes(this.user.role);
+    if (!this.isAuthenticated) {
+      return false;
+    }
+    for (const role of this.user.roles) {
+      if (roles.includes(role)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   isAdmin(): boolean {

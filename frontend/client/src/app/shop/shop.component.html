@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
   <span>TPV </span>
-  <img alt="miw" src="../../assets/images/miw.png"/>
+  <img alt="miw" src="../../assets/images/logo.png" width="50px" />
   <!--<span class="toolbar-spacer"></span>-->
   <span>
     <app-date></app-date>
     <button (click)="logout()" mat-button>
-      <span>{{username}}</span>
+      <span>{{ username }}</span>
       <mat-icon>person</mat-icon>
       <span>Logout</span>
     </button>
@@ -58,7 +58,12 @@
     <mat-icon>lock_open</mat-icon>
     <span>Open Cashier</span>
   </button>
-  <button *ngIf="!cashierClosed" disabled="disabled" mat-menu-item routerLink="">
+  <button
+    *ngIf="!cashierClosed"
+    disabled="disabled"
+    mat-menu-item
+    routerLink=""
+  >
     <mat-icon>account_balance_wallet</mat-icon>
     <span>Cash Movement</span>
   </button>
@@ -110,7 +115,12 @@
     <mat-icon>local_shipping</mat-icon>
     <span>Providers</span>
   </button>
-  <button *ngIf="untilManager()" disabled="disabled" mat-menu-item routerLink="">
+  <button
+    *ngIf="untilManager()"
+    disabled="disabled"
+    mat-menu-item
+    routerLink=""
+  >
     <mat-icon>storage</mat-icon>
     <span>Orders</span>
   </button>

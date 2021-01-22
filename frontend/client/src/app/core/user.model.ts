@@ -11,7 +11,7 @@ export interface User {
   lastName?: string;
   name?: string;
   role?: Role;
-  roles?: UserRole[];
+  roles?: Role[];
   avatar?: string;
   email?: string;
   courseId?: string;

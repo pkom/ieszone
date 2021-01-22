@@ -1,20 +1,7 @@
 <mat-toolbar color="primary">
-  <div>
-    <mat-form-field
-      appearance="fill"
-      floatLabel="false"
-      hideRequiredMarker="true"
-    >
-      <mat-label><small>Description</small></mat-label>
-      <input #code matInput placeholder="" required />
-    </mat-form-field>
-    <button (click)="search(code.value)" mat-icon-button>
-      <mat-icon>pageview</mat-icon>
-    </button>
-  </div>
-  <img alt="miw" src="../../assets/images/miw.png" />
+  <img alt="miw" src="../../assets/images/logo.png" width="50px" />
   <button mat-button routerLink="/home/adviser">
-    <span>TPV</span>
+    <span>IesZone</span>
   </button>
   <div>
     <button (click)="login()" *ngIf="!isAuthenticated()" mat-button>

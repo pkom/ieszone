@@ -1,0 +1,38 @@
+@import '_mixins';
+
+button {
+  font-family: mBold;
+  font-size: size(font);
+  &.no-icon {
+    width: 100%;
+  }
+}
+
+mat-button-toggle::ng-deep {
+  background: transparent;
+  .mat-button-toggle-label-content {
+    line-height: 30px !important;
+    p {
+      font-family: mBold;
+      color: color(secondary) !important;
+      font-size: size(font);
+    }
+    mat-icon {
+      color: color(secondary) !important;
+    }
+  }
+}
+
+.mat-button-toggle-checked {
+  p,
+  mat-icon {
+    color: color(primary) !important;
+  }
+}
+.mat-button-toggle-disabled {
+  background: transparent !important;
+  p,
+  mat-icon {
+    color: color(disabled) !important;
+  }
+}

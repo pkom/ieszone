@@ -1,0 +1,20 @@
+@import '_mixins';
+ul {
+  display: block;
+  li {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    p {
+      padding-right: size(padding);
+    }
+    .actions {
+      margin-left: auto;
+      img {
+        width: 30px;
+        padding-left: size(padding);
+        cursor: pointer;
+      }
+    }
+  }
+}

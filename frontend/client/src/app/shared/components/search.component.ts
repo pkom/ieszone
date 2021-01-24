@@ -1,10 +1,10 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {of} from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-search',
   templateUrl: 'search.component.html',
-  styleUrls: ['search.component.css']
+  styleUrls: ['search.component.css'],
 })
 export class SearchComponent {
   @Input() title = 'Search';

@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import {HttpService} from '@core/http.service';
-import {Article} from '../shared/services/models/article.model';
-import {ArticleSearch} from './article-search.model';
-import {EndPoints} from '@shared/end-points';
+import { HttpService } from '@core/http.service';
+import { Article } from '../shared/services/models/article.model';
+import { ArticleSearch } from './article-search.model';
+import { EndPoints } from '@shared/end-points';
 
 @Injectable({
   providedIn: 'root',
@@ -13,17 +13,14 @@ export class ArticleService {
   static SEARCH = '/search';
   static UNFINISHED = '/unfinished';
 
-  constructor(private httpService: HttpService) {
-  }
+  constructor(private httpService: HttpService) {}
 
   create(article: Article): Observable<Article> {
-    return this.httpService
-      .post(EndPoints.ARTICLES, article);
+    return this.httpService.post(EndPoints.ARTICLES, article);
   }
 
   read(barcode: string): Observable<Article> {
-    return this.httpService
-      .get(EndPoints.ARTICLES + '/' + barcode);
+    return this.httpService.get(EndPoints.ARTICLES + '/' + barcode);
   }
 
   update(oldBarcode: string, article: Article): Observable<Article> {
@@ -39,8 +36,6 @@ export class ArticleService {
   }
 
   searchUnfinished(): Observable<Article[]> {
-    return this.httpService
-      .get(EndPoints.ARTICLES + ArticleService.UNFINISHED);
+    return this.httpService.get(EndPoints.ARTICLES + ArticleService.UNFINISHED);
   }
 }
-

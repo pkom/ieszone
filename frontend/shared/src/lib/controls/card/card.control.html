@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-header [class.no-image]="!img">
+    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-subtitle>{{subTitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    draggable="false"
+    *ngIf="img"
+    mat-card-sm-image
+    [src]="img"
+    onerror="this.src='assets/images/place-small.svg'"
+  />
+  <p class="tag" *ngIf="tag" [class.no-image]="!img">{{tag}}</p>
+  <mat-card-content [class.no-image]="!img">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </mat-card-content>
+  <mat-card-actions *ngIf="buttons?.length" [class.no-image]="!img">
+    <button mat-button [style.color]="btn.color" *ngFor="let btn of buttons">
+      {{btn.name}}
+    </button>
+  </mat-card-actions>
+</mat-card>

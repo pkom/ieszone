@@ -1,0 +1,62 @@
+<div class="page">
+  <h1>Cards and Modals</h1>
+  <div class="case">
+    <h5>1. Basic Card</h5>
+    <div class="row between-xs">
+      <iz-card
+        *ngFor="let card of cards"
+        [title]="card.title"
+        [ngClass]="card.class"
+        [subTitle]="card.subTitle"
+        [content]="templateRef"
+        [img]="card.img"
+        [buttons]="card.buttons"
+        [tag]="card.tag"
+      >
+        <ng-template #templateRef>
+          <a class="link" (click)="linkHandler(card)">{{
+            card.content.name
+          }}</a>
+          <p>( {{ card.content.mobile }} )</p>
+        </ng-template>
+      </iz-card>
+    </div>
+  </div>
+  <div class="case">
+    <h5>2. List Cards</h5>
+    <div class="row">
+      <iz-list
+        [items]="items"
+        class="col-sm-12"
+        [template]="listTemplate"
+        (heroAction)="heroClick($event)"
+        (primaryAction)="primaryClick($event)"
+        (secondaryAction)="secondaryClick($event)"
+      ></iz-list>
+    </div>
+  </div>
+  <div class="case">
+    <h5>2. Pop-up</h5>
+    <div class="row">
+      <iz-button
+        name="SnackBar"
+        class="col-xs-2"
+        (click)="notify()"
+      ></iz-button>
+      <iz-button
+        name="Modal Dialog"
+        class="col-xs-2"
+        (click)="openModal()"
+      ></iz-button>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalTemplate>
+  <p>This is a template</p>
+</ng-template>
+
+<ng-template #listTemplate let-content>
+  {{ content.description }}
+  <span class="link" (click)="linkHandler(content)">{{ content.teacher }}</span>
+</ng-template>

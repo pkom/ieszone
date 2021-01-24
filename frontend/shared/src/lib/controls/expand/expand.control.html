@@ -1,0 +1,28 @@
+<mat-accordion [multi]="multi">
+  <div *ngFor="let item of items" class="expander">
+    <img
+      draggable="false"
+      *ngIf="item.img"
+      [src]="item.img"
+      onerror="this.src='assets/images/place-small.svg'"
+    />
+    <mat-expansion-panel
+      [disabled]="item.disabled"
+      [expanded]="item.expanded"
+      hideToggle
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span class="material-icons">arrow_drop_down</span>
+          {{item.title}}
+        </mat-panel-title>
+        <mat-panel-description *ngIf="item.description">
+          {{item.description}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ng-container
+        *ngTemplateOutlet="template; context: { $implicit: item.content }"
+      ></ng-container>
+    </mat-expansion-panel>
+  </div>
+</mat-accordion>

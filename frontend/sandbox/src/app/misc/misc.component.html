@@ -1,0 +1,39 @@
+<div class="page">
+  <h1>Miscellaneous</h1>
+  <div class="case">
+    <h5>1. Level Input</h5>
+    <div class="row between-xs">
+      <iz-level
+        class="col-sm-6"
+        [showTicks]="true"
+        [thumbLabel]="true"
+        [initialValue]="75"
+      ></iz-level>
+    </div>
+  </div>
+  <div class="case">
+    <h5>2. Loader</h5>
+    <div class="loader">
+      <iz-loader value="75"></iz-loader>
+    </div>
+  </div>
+  <div class="case">
+    <h5>3. Spinner</h5>
+    <div class="row">
+      <iz-spinner value="75"></iz-spinner>
+    </div>
+  </div>
+  <div class="case">
+    <h5>3. Change Theme</h5>
+    <div class="row">
+      <iz-button
+        (click)="changeTheme()"
+        icon="{{ darkTheme ? 'switch_left' : 'switch_right' }}"
+        type="icon"
+      ></iz-button>
+    </div>
+    <div class="row">
+      <p>{{ darkTheme ? 'Dark Theme' : 'Light Theme' }}</p>
+    </div>
+  </div>
+</div>

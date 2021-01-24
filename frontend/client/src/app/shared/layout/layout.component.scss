@@ -1,0 +1,57 @@
+@import '_mixins';
+
+:host {
+  height: 100vh;
+  display: flex;
+  mat-drawer-content {
+    width: 100vw;
+    height: 100vh;
+    background: color(view);
+    display: flex;
+    overflow: hidden;
+    sz-navbar {
+      width: 80px;
+      height: 100vh;
+      background: color(nav);
+      text-align: center;
+      box-shadow: 1px 1px 5px color(black);
+      @include mobile {
+        width: 100vw;
+        height: 80px;
+      }
+    }
+    sz-content {
+      flex-grow: 1;
+      margin-left: size(margin);
+      margin-bottom: size(margin);
+      @include mobile {
+        margin-right: size(margin);
+        height: 0;
+      }
+      @include tablet {
+        margin-right: size(margin);
+      }
+    }
+    sz-sidebar {
+      width: 25vw;
+      margin: 0 size(margin) size(margin) size(margin);
+      @include mobile {
+        display: none;
+      }
+      @include tablet {
+        display: none;
+      }
+    }
+
+    @include mobile {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+mat-drawer::ng-deep {
+  width: 320px;
+  .mat-drawer-inner-container {
+    padding: size(padding);
+  }
+}

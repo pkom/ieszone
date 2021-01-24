@@ -1,0 +1,32 @@
+@import '_mixins';
+
+:host {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  .powered {
+    font-size: 8px;
+    margin-right: 4px;
+    align-self: flex-start;
+  }
+  img {
+    height: 12px;
+    margin-right: 4px;
+    &.large {
+      height: 2.5vw;
+      min-height: 50px;
+    }
+  }
+  .sz-logo {
+    font-family: mRegular;
+    font-variant: small-caps;
+    font-size: 10px;
+    color: color(secondary);
+    span {
+      color: color(primary);
+    }
+    &.large {
+      font-size: 24px;
+    }
+  }
+}

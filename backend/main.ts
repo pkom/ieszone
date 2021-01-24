@@ -61,8 +61,9 @@ async function bootstrap() {
   }
   app.enableCors();
   await app.listen(port, () => {
-    logger.log(`${appName} is running in ${mode.toUpperCase()} mode`);
-    logger.log(`${appName} is running on http://localhost:${port}/${version}`);
+    logger.log(
+      `${appName} is running ${mode.toUpperCase()} mode on http://localhost:${port}/${version}`,
+    );
   });
 }
 bootstrap();

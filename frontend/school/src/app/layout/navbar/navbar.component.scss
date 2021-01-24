@@ -1,0 +1,41 @@
+@import '_mixins';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  ul {
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+    li {
+      padding: 0;
+      width: 80px;
+      cursor: pointer;
+      &.active {
+        background-color: color(active);
+      }
+      &:hover:not([class^='active']) {
+        background-color: color(hover, main);
+      }
+      img {
+        height: 30px;
+        margin: 20px;
+      }
+    }
+  }
+
+  @include mobile {
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    ul {
+      flex-direction: row;
+    }
+    @include hide-overflow;
+  }
+}
+
+img {
+  filter: drop-shadow(2px 4px 6px black);
+}

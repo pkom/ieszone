@@ -1,8 +1,7 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   templateUrl: 'cancel-yes-dialog.component.html',
-  styleUrls: ['./dialog.component.css']
+  styleUrls: ['./dialog.component.css'],
 })
-export class CancelYesDialogComponent {
-}
+export class CancelYesDialogComponent {}

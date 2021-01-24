@@ -1,0 +1,14 @@
+@import '_mixins';
+
+mat-form-field {
+  width: 100%;
+  .input-icon {
+    font-size: 1.2vw;
+    @include tablet {
+      font-size: 2vw;
+    }
+    @include mobile {
+      font-size: 5vw;
+    }
+  }
+}

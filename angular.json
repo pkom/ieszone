@@ -56,15 +56,18 @@
               "frontend/client/src/assets",
               {
                 "glob": "**/*",
-                "input": "frontend/shared/src/lib",
+                "input": "frontend/shared/src/assets",
                 "output": "/assets/"
-              }  
+              },
+              "frontend/client/src/manifest.webmanifest"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "frontend/shared/src/global.scss",
-              "frontend/client/src/styles.css"              
+              "frontend/client/src/styles.scss"              
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["frontend/shared/src/"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -173,14 +176,18 @@
               "frontend/school/src/assets",
               {
                 "glob": "**/*",
-                "input": "frontend/shared/src/lib",
+                "input": "frontend/shared/src/assets",
                 "output": "/assets/"
-              }  
+              },
+              "frontend/school/src/manifest.webmanifest"
             ],
             "styles": [
               "frontend/shared/src/global.scss",
               "frontend/school/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["frontend/shared/src/"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -297,6 +304,9 @@
               "frontend/shared/src/global.scss",
               "frontend/admin/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["frontend/shared/src/"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -413,6 +423,9 @@
               "frontend/shared/src/global.scss",
               "frontend/super/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["frontend/shared/src/"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -475,8 +488,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "inlineTemplate": true,
-          "inlineStyle": true,
+          "inlineTemplate": false,
+          "inlineStyle": false,
           "style": "scss",
           "skipTests": true
         },
@@ -504,7 +517,7 @@
       },
       "root": "frontend/sandbox",
       "sourceRoot": "frontend/sandbox/src",
-      "prefix": "iz",
+      "prefix": "demo",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -514,14 +527,13 @@
             "main": "frontend/sandbox/src/main.ts",
             "polyfills": "frontend/sandbox/src/polyfills.ts",
             "tsConfig": "frontend/sandbox/tsconfig.app.json",
-            "progress": true,
             "aot": true,
             "assets": [
               "frontend/sandbox/src/favicon.ico",
               "frontend/sandbox/src/assets",
               {
                 "glob": "**/*",
-                "input": "frontend/shared/src/lib",
+                "input": "frontend/shared/src/assets",
                 "output": "/assets/"
               }
             ],
@@ -529,6 +541,9 @@
               "frontend/shared/src/global.scss",
               "frontend/sandbox/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["frontend/shared/src/"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -542,6 +557,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -593,40 +609,131 @@
       "sourceRoot": "frontend/shared/src",
       "prefix": "iz",
       "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "tsConfig": "frontend/shared/tsconfig.lib.json",
-            "project": "frontend/shared/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "frontend/shared/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "frontend/shared/src/test.ts",
-            "tsConfig": "frontend/shared/tsconfig.spec.json",
-            "karmaConfig": "frontend/shared/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "frontend/shared/tsconfig.lib.json",
-              "frontend/shared/tsconfig.spec.json"
+            "tsConfig": ["frontend/shared/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "frontend/shared/jest.config.js",
+            "tsConfig": "frontend/shared/tsconfig.spec.json",
+            "setupFile": "frontend/shared/src/test-setup.ts",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "todo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "frontend/todo",
+      "sourceRoot": "frontend/todo/src",
+      "prefix": "sz",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/todo",
+            "index": "frontend/todo/src/index.html",
+            "main": "frontend/todo/src/main.ts",
+            "polyfills": "frontend/todo/src/polyfills.ts",
+            "tsConfig": "frontend/todo/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "frontend/todo/src/favicon.ico",
+              "frontend/todo/src/assets"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "styles": [
+              "frontend/shared/src/global.scss",
+              "frontend/todo/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["frontend/shared/src/"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "frontend/todo/src/environments/environment.ts",
+                  "with": "frontend/todo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "todo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "todo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "todo:build"
           }
         }
       }
     }
   },
-  "defaultProject": "client"
+  "defaultProject": "school"
 }

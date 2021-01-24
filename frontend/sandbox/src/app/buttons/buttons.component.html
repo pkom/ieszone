@@ -1,0 +1,89 @@
+<div class="page">
+  <h1>Buttons</h1>
+  <div class="case">
+    <h5>1. Basic Button</h5>
+    <div class="row between-xs">
+      <iz-button type="basic" name="Basic"></iz-button>
+      <iz-button type="basic" name="Primary" color="primary"></iz-button>
+      <iz-button type="basic" name="Accent" color="accent"></iz-button>
+      <iz-button type="basic" name="Warn" color="warn"></iz-button>
+      <iz-button type="basic" name="Disabled" disabled="true"></iz-button>
+    </div>
+  </div>
+  <div class="case">
+    <h5>2. Raised Button</h5>
+    <div class="row between-xs">
+      <iz-button name="Basic" class="col-xs-2"></iz-button>
+      <iz-button name="Primary" color="primary" class="col-xs-2"></iz-button>
+      <iz-button name="Accent" color="accent" class="col-xs-2"></iz-button>
+      <iz-button name="Warn" color="warn" class="col-xs-2"></iz-button>
+      <iz-button name="Disabled" disabled="true" class="col-xs-2"></iz-button>
+    </div>
+  </div>
+  <div class="case">
+    <h5>3. Stroked Button</h5>
+    <div class="row between-xs">
+      <iz-button type="stroked" name="Basic"></iz-button>
+      <iz-button type="stroked" name="Primary" color="primary"></iz-button>
+      <iz-button type="stroked" name="Accent" color="accent"></iz-button>
+      <iz-button type="stroked" name="Warn" color="warn"></iz-button>
+      <iz-button type="stroked" name="Disabled" disabled="true"></iz-button>
+    </div>
+  </div>
+  <div class="case">
+    <h5>4. Flat Button</h5>
+    <div class="row between-xs">
+      <iz-button type="flat" name="Basic"></iz-button>
+      <iz-button type="flat" name="Primary" color="primary"></iz-button>
+      <iz-button type="flat" name="Accent" color="accent"></iz-button>
+      <iz-button type="flat" name="Warn" color="warn"></iz-button>
+      <iz-button type="flat" name="Disabled" disabled="true"></iz-button>
+    </div>
+  </div>
+  <div class="case">
+    <h5>4. Icon Button</h5>
+    <div class="row between-xs">
+      <iz-button icon="home" type="icon"></iz-button>
+      <iz-button icon="menu" type="icon" color="primary"></iz-button>
+      <iz-button icon="favorite" type="icon" color="accent"></iz-button>
+      <iz-button icon="delete" type="icon" color="warn"></iz-button>
+      <iz-button icon="open_in_new" type="icon" disabled="true"></iz-button>
+    </div>
+  </div>
+  <div class="case">
+    <h5>4. Fab Button</h5>
+    <div class="row between-xs">
+      <iz-button icon="home" type="fab"></iz-button>
+      <iz-button icon="menu" type="fab" color="primary"></iz-button>
+      <iz-button icon="favorite" type="fab" color="accent"></iz-button>
+      <iz-button icon="delete" type="fab" color="warn"></iz-button>
+      <iz-button icon="open_in_new" type="fab" disabled="true"></iz-button>
+    </div>
+  </div>
+  <div class="case">
+    <h5>4. Mini Fab Button</h5>
+    <div class="row between-xs">
+      <iz-button icon="home" type="mini"></iz-button>
+      <iz-button icon="menu" type="mini" color="primary"></iz-button>
+      <iz-button icon="favorite" type="mini" color="accent"></iz-button>
+      <iz-button icon="delete" type="mini" color="warn"></iz-button>
+      <iz-button icon="open_in_new" type="mini" disabled="true"></iz-button>
+    </div>
+  </div>
+  <div class="case">
+    <h5>5. Toggle Button</h5>
+    <div class="row between-xs">
+      <iz-button-toggle
+        appearance="legacy"
+        [buttons]="buttons"
+        initialValue="center"
+        (toggleValue)="toggleChange($event)"
+      ></iz-button-toggle>
+      <iz-button-toggle
+        [buttons]="iconButtons"
+        initialValue="center"
+        (toggleValue)="toggleChange($event)"
+      ></iz-button-toggle>
+    </div>
+  </div>
+</div>

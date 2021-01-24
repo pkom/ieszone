@@ -1,0 +1,12 @@
+@import '_mixins';
+
+:host {
+  display: flex;
+  justify-content: space-between;
+
+  @include mobile {
+    .today {
+      display: none;
+    }
+  }
+}

@@ -1,42 +1,256 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$sandbox-primary: mat-palette($mat-indigo);
-$sandbox-accent: mat-palette($mat-pink, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$sandbox-warn: mat-palette($mat-red);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$sandbox-theme: mat-light-theme((
-  color: (
-    primary: $sandbox-primary,
-    accent: $sandbox-accent,
-    warn: $sandbox-warn,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($sandbox-theme);
-
 @import '_variables';
+@import '_mixins';
+@import 'flexboxgrid.min.css';
+@import '~@angular/material/theming';
+@import '_theme';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@include mat-core();
+@include angular-material-theme($sz-light-theme);
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  outline: none;
+  @include mobile {
+    --line-thick-size: 4px;
+    --line-base-size: 2px;
+    --margin-base-size: 2vw;
+    --padding-base-size: 2vw;
+    --subnav-height-size: 50px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+// Scrollbar
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: color(disabled, light);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: color(disabled, dark);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: color(hover, main);
+}
+
+.dark-theme {
+  @include angular-material-theme($sz-dark-theme);
+  --white-base-color: #f4f4f4;
+  --black-base-color: #1e1f21;
+  --fg-base-color: #f4f4f4;
+  --view-base-color: #212121;
+  --primary-base-color: #1976d2;
+  --secondary-base-color: #616161;
+  --secondary-light-color: #3c3c3c;
+  --accent-base-color: #7f6196;
+  --error-base-color: #ff6e6e;
+  --warn-base-color: #847317;
+  --gentle-base-color: #0f4e1a;
+  --bg-base-color: #303030;
+  --nav-base-color: #1b1b1b;
+  --active-base-color: #444951;
+  --hover-base-color: #495c78;
+  --hover-main-color: #0b0f15;
+  --disabled-dark-color: #888;
+  --disabled-base-color: #363636;
+  --disabled-light-color: #3d3d3d;
+  --field-light-color: #2c2c2c;
+  --vertical-header-color: rgba(255, 255, 255, 0.7);
+}
+
+// Typography
+
+h1 {
+  font-family: aRegular;
+  font-weight: normal;
+  font-size: 28px;
+  color: color(fg);
+  font-variant: small-caps;
+  user-select: none;
+  height: 50px;
+  line-height: 50px;
+}
+
+h2 {
+  font-family: aRegular;
+  font-weight: normal;
+  font-size: 20px;
+  font-variant: petite-caps;
+  color: color(secondary);
+  user-select: none;
+}
+
+h3 {
+  font-family: mRegular;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  color: color(disabled, dark);
+  font-variant: small-caps;
+  user-select: none;
+}
+
+h4 {
+  font-family: aBold;
+  font-size: 16px;
+  line-height: 24px;
+  color: color(disabled, dark);
+  font-variant: small-caps;
+  user-select: none;
+}
+
+h5 {
+  font-family: mRegular;
+  font-size: 12px;
+  line-height: 20px;
+  color: color(primary);
+  user-select: none;
+}
+
+h6 {
+  font-family: aRegular;
+  font-size: 12px;
+  line-height: 20px;
+  color: color(primary);
+  user-select: none;
+}
+
+p {
+  color: color(fg);
+  font-family: aRegular;
+  font-weight: lighter;
+}
+
+img {
+  height: 30px;
+  user-select: none;
+  &.school-logo {
+    height: 40px;
+    margin: 20px;
+  }
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  li {
+    padding: 0 size(padding);
+  }
+}
+
+.side-element {
+  display: flex;
+  flex-direction: column;
+  margin: size(margin);
+  .side-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    img {
+      height: 20px;
+      margin-left: 4px;
+    }
+    h4 {
+      text-align: right;
+    }
+    border-bottom: size(line) solid color(disabled);
+  }
+  .container {
+    flex-grow: 1;
+    width: 100%;
+    height: 80px;
+    margin-top: size(margin);
+    display: flex;
+  }
+}
+
+mat-icon {
+  color: color(secondary);
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    color: color(hover, main);
+  }
+}
+
+sz-logo {
+  user-select: none;
+}
+
+p.empty {
+  color: color(disabled, dark);
+  font-size: 12px;
+}
+
+p.info {
+  color: color(secondary);
+  font-size: 16px;
+}
+
+span.link {
+  text-decoration: underline;
+  color: color(primary);
+  cursor: pointer;
+}
+
+.row {
+  padding: size(padding);
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: color(field, light);
+}
+
+.mat-form-field-appearance-fill.mat-form-field-disabled .mat-form-field-flex {
+  background-color: color(field, light);
+}
+
+.link {
+  font-family: aRegular;
+  color: var(--primary-base-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.mat-dialog-container {
+  padding: size(padding, lg) !important;
+  h1 {
+    font-family: mBold;
+  }
+  .mat-dialog-actions {
+    justify-content: flex-end;
+    margin-right: calc(#{size(padding)} * -1);
+  }
+}
+
+.dark-theme .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #383838;
+}
+
+input {
+  color: color(fg) !important;
+}
+
+.view-port {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }

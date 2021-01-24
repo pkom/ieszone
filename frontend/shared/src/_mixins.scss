@@ -1,0 +1,107 @@
+@import '_variables';
+
+// To quickly centre a block element
+@mixin center-block {
+  display: block;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+// To hide overflow and maintain functionality
+@mixin hide-overflow {
+  scrollbar-width: none; /* Firefox 64 */
+  -ms-overflow-style: none; /* Internet Explorer 11 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// To quickly centre vertically
+@mixin center-vertically {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include prefix(transform, translate(-50%, -50%), 'webkit' 'ms');
+}
+
+// When using ::before and ::after
+// @include pseudo;
+@mixin pseudo($content: '', $display: block, $pos: absolute) {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+// We use this for creating scalable elements (usually images / background images) that maintain a ratio.
+// @include responsive-ratio(16,9);
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + '%');
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+// media - query
+// @include mq('tablet-wide')
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+// To trigger hardware acceleration
+@mixin hardware($backface: true, $perspective: 1000) {
+  @if $backface {
+    backface-visibility: hidden;
+  }
+  perspective: $perspective;
+}
+
+// Truncate
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Get properties from CSS Var
+@function color($type: primary, $variant: base) {
+  @return var(--#{$type}-#{$variant}-color);
+}
+@function size($type: base, $variant: base) {
+  @return var(--#{$type}-#{$variant}-size);
+}
+
+// Media Queries
+$SmallScr: 767px;
+$MediumScr: 959px;
+$LandscapeScr: 1280px;
+$LargeScr: 1600px;
+$ExtraLargeScr: 1920px;
+
+@mixin mobile {
+  @media (max-width: #{$SmallScr}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$MediumScr}) {
+    @content;
+  }
+}

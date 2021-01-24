@@ -1,4 +1,4 @@
-import {ShoppingState} from './shopping-state.model';
+import { ShoppingState } from './shopping-state.model';
 
 export class Shopping {
   amount: number;
@@ -6,7 +6,11 @@ export class Shopping {
   total: number;
   state: ShoppingState;
 
-  constructor(public barcode: string, public description: string, public retailPrice: number) {
+  constructor(
+    public barcode: string,
+    public description: string,
+    public retailPrice: number,
+  ) {
     this.amount = 1;
     this.discount = 0;
     this.total = this.retailPrice * this.amount * (1 - this.discount / 100);
@@ -18,11 +22,14 @@ export class Shopping {
   }
 
   updateTotal(): void {
-    this.total = Shopping.round2decimal(this.retailPrice * this.amount * (1 - this.discount / 100));
+    this.total = Shopping.round2decimal(
+      this.retailPrice * this.amount * (1 - this.discount / 100),
+    );
   }
 
   updateDiscount(): void {
-    this.discount = Shopping.round2decimal(100 * (1 - (this.total / (this.amount * this.retailPrice))));
+    this.discount = Shopping.round2decimal(
+      100 * (1 - this.total / (this.amount * this.retailPrice)),
+    );
   }
-
 }

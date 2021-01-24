@@ -1,0 +1,81 @@
+<div class="page">
+  <h1>Date Picker</h1>
+
+  <div class="case">
+    <h5>1. Display Formats</h5>
+    <div class="row between-xs">
+      <iz-date
+        name="Simple Date Picker"
+        class="col-sm-4"
+        [initialValue]="today"
+      ></iz-date>
+      <iz-date
+        class="col-sm-7"
+        hint="Additional Options similar to <strong>Input fields</strong>"
+        name="Date Time Format with Touch UI"
+        format="dddd, MMMM Do YYYY, h:mm:ss a"
+        [touch]="true"
+        [initialValue]="today"
+      ></iz-date>
+    </div>
+    <div class="row between-xs">
+      <iz-date
+        class="col-sm-4"
+        name="Complete Disabled"
+        format="LL"
+        [initialValue]="today"
+        disabled="true"
+      ></iz-date>
+
+      <iz-date
+        class="col-sm-3"
+        name="Input Disabled"
+        [inputDisabled]="true"
+        format="ddd, hA"
+        [initialValue]="today"
+      ></iz-date>
+      <iz-date
+        class="col-sm-4"
+        name="Custom Format"
+        format="[Today is] dddd"
+        [initialValue]="today"
+      ></iz-date>
+    </div>
+    <div class="row">
+      <iz-date-range class="col-sm-4" name="Date Range"></iz-date-range>
+    </div>
+    <div class="row middle-xs">
+      <a
+        class="mat-raised-button"
+        href="https://momentjs.com/docs/#/displaying/format/"
+        target="_blank"
+        >Moment Format Reference Link</a
+      >
+      <p class="col-xs-6"><- Check Out for More Formats</p>
+    </div>
+  </div>
+
+  <div class="case">
+    <h5>2. Appearance</h5>
+    <div class="row between-xs">
+      <iz-date
+        name="Standard"
+        appearance="standard"
+        class="col-sm-3"
+        [initialValue]="today"
+      ></iz-date>
+      <iz-date
+        name="Fill"
+        appearance="fill"
+        class="col-sm-3"
+        [initialValue]="today"
+      ></iz-date>
+      <iz-date
+        name="Outline"
+        appearance="outline"
+        class="col-sm-3"
+        [initialValue]="today"
+      ></iz-date>
+    </div>
+  </div>
+</div>

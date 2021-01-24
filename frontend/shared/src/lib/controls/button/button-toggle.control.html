@@ -1,0 +1,17 @@
+<mat-button-toggle-group
+  [value]="initialValue"
+  #group="matButtonToggleGroup"
+  (change)="onValChange(group.value)"
+>
+  <mat-button-toggle
+    *ngFor="let btn of buttons"
+    [value]="btn.value"
+    [disabled]="btn.disabled"
+  >
+    <mat-icon *ngIf="btn.icon && position=='prefix'">{{btn.icon}}</mat-icon>
+    <p>
+      {{btn.name | titlecase}}
+    </p>
+    <mat-icon *ngIf="btn.icon && position=='suffix'">{{btn.icon}}</mat-icon>
+  </mat-button-toggle>
+</mat-button-toggle-group>

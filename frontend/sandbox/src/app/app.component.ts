@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
+import { ThemeService } from './theme.service';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'iz-root',
-  template: `<form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Favorite food</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="Sushi" />
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Leave a comment</mat-label>
-      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-    </mat-form-field>
-  </form>`,
+  selector: 'demo-root',
+  template: `
+    <demo-layout
+      [ngClass]="{ 'dark-theme': isDarkTheme | async }"
+    ></demo-layout>
+  `,
   styles: [],
 })
 export class AppComponent {
   title = 'sandbox';
+  isDarkTheme = this.theme.darkTheme$;
+
+  constructor(private theme: ThemeService) {}
 }

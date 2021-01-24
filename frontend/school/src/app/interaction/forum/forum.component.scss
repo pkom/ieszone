@@ -1,0 +1,29 @@
+@import '_mixins';
+
+.forum {
+  height: 100%;
+  padding: size(padding, lg);
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  sz-list {
+    flex-grow: 1;
+  }
+  form {
+    align-content: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    sz-input {
+      width: 90%;
+    }
+    img {
+      cursor: pointer;
+      opacity: 0.6;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<h1 mat-dialog-title [style.color]="data.type">{{data?.title}}</h1>
+<div mat-dialog-content>
+  <ng-container *ngTemplateOutlet="data?.content"></ng-container>
+  <br />
+</div>
+<div mat-dialog-actions>
+  <button
+    *ngIf="data.closeBtn"
+    [style.color]="data.closeBtn.color"
+    mat-button
+    (click)="onNoClick()"
+    [attr.cdkFocusInitial]="data.closeBtn.focus"
+  >
+    {{data.closeBtn.name || 'Close'}}
+  </button>
+  <button
+    *ngIf="data.primaryBtn"
+    [style.color]="data.primaryBtn.color"
+    mat-button
+    [mat-dialog-close]="true"
+    [attr.cdkFocusInitial]="data.primaryBtn.focus"
+  >
+    {{data.primaryBtn.name || 'Ok'}}
+  </button>
+</div>

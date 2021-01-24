@@ -1,0 +1,46 @@
+@import '_mixins';
+
+.expander {
+  display: flex;
+  align-items: baseline;
+  img {
+    margin-right: size(margin);
+    padding-top: calc(#{size(padding)} * 0.5);
+  }
+  mat-expansion-panel {
+    flex-grow: 1;
+  }
+}
+
+mat-expansion-panel::ng-deep {
+  background: transparent !important;
+  color: color(fg);
+  mat-expansion-panel-header {
+    font-family: mRegular;
+    padding: 0;
+    user-select: none;
+    outline: none;
+    span.mat-content {
+      border-bottom: size(line) solid color(disabled);
+    }
+    mat-panel-description {
+      justify-content: flex-end;
+    }
+    &:hover {
+      background: none !important;
+    }
+  }
+  .mat-expansion-panel-body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+  box-shadow: none;
+}
+.mat-expanded .mat-expansion-panel-header-title .material-icons {
+  transform: rotate(180deg);
+}
+.material-icons {
+  color: color(secondary);
+}

@@ -1,12 +1,12 @@
-import {Component, Inject} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
-import {TicketCreation} from './ticket-creation.model';
-import {ShoppingCartService} from './shopping-cart.service';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { TicketCreation } from './ticket-creation.model';
+import { ShoppingCartService } from './shopping-cart.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   templateUrl: 'check-out-dialog.component.html',
-  styleUrls: ['shopping-cart.component.css']
+  styleUrls: ['shopping-cart.component.css'],
 })
 export class CheckOutDialogComponent {
   ticketCreation: TicketCreation;
@@ -15,9 +15,18 @@ export class CheckOutDialogComponent {
   requestedGiftTicket = false;
   requestedDataProtectionAct = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) data, private dialogRef: MatDialogRef<CheckOutDialogComponent>,
-              private shoppingCartService: ShoppingCartService) {
-    this.ticketCreation = {cash: 0, card: 0, voucher: 0, shoppingList: data, note: ''};
+  constructor(
+    @Inject(MAT_DIALOG_DATA) data,
+    private dialogRef: MatDialogRef<CheckOutDialogComponent>,
+    private shoppingCartService: ShoppingCartService,
+  ) {
+    this.ticketCreation = {
+      cash: 0,
+      card: 0,
+      voucher: 0,
+      shoppingList: data,
+      note: '',
+    };
     this.total();
   }
 
@@ -36,7 +45,7 @@ export class CheckOutDialogComponent {
   searchUser(mobile: string): void {
     if (mobile) {
       // TODO falta buscar el user en BD, si no existe, debe sacar un dialogo para crearlo
-      this.ticketCreation.user = {mobile: Number(mobile)};
+      this.ticketCreation.user = { mobile: Number(mobile) };
     }
   }
 
@@ -72,12 +81,15 @@ export class CheckOutDialogComponent {
   }
 
   returnedAmount(): number {
-    return Math.round(
-      (this.format(this.ticketCreation.cash)
-        + this.format(this.ticketCreation.card)
-        + this.format(this.ticketCreation.voucher)
-        - this.totalPurchase) * 100
-    ) / 100;
+    return (
+      Math.round(
+        (this.format(this.ticketCreation.cash) +
+          this.format(this.ticketCreation.card) +
+          this.format(this.ticketCreation.voucher) -
+          this.totalPurchase) *
+          100,
+      ) / 100
+    );
   }
 
   returnedCash(): number {
@@ -102,11 +114,14 @@ export class CheckOutDialogComponent {
     if (this.returnedAmount() < 0 && this.ticketCreation.cash === 0) {
       this.ticketCreation.cash = -this.returnedAmount();
     } else if (this.ticketCreation.cash < 20) {
-      this.ticketCreation.cash = (Math.round(this.ticketCreation.cash / 5) + 1) * 5;
+      this.ticketCreation.cash =
+        (Math.round(this.ticketCreation.cash / 5) + 1) * 5;
     } else if (this.ticketCreation.cash < 50) {
-      this.ticketCreation.cash = (Math.round(this.ticketCreation.cash / 10) + 1) * 10;
+      this.ticketCreation.cash =
+        (Math.round(this.ticketCreation.cash / 10) + 1) * 10;
     } else {
-      this.ticketCreation.cash = (Math.round(this.ticketCreation.cash / 50) + 1) * 50;
+      this.ticketCreation.cash =
+        (Math.round(this.ticketCreation.cash / 50) + 1) * 50;
     }
   }
 
@@ -115,7 +130,9 @@ export class CheckOutDialogComponent {
   }
 
   invalidCheckOut(): boolean {
-    return (this.totalPurchase + this.returnedAmount() - this.totalCommitted() < -0.01); // rounding errors
+    return (
+      this.totalPurchase + this.returnedAmount() - this.totalCommitted() < -0.01
+    ); // rounding errors
   }
 
   round(value): any {
@@ -137,10 +154,12 @@ export class CheckOutDialogComponent {
       this.ticketCreation.cash = 0;
     }
     if (this.ticketCreation.card > 0) {
-      this.ticketCreation.note += ' Pay with card: ' + this.round(this.ticketCreation.card) + '.';
+      this.ticketCreation.note +=
+        ' Pay with card: ' + this.round(this.ticketCreation.card) + '.';
     }
     if (this.ticketCreation.voucher > 0) {
-      this.ticketCreation.note += ' Pay with voucher: ' + this.round(this.ticketCreation.voucher) + '.';
+      this.ticketCreation.note +=
+        ' Pay with voucher: ' + this.round(this.ticketCreation.voucher) + '.';
     }
     if (this.ticketCreation.cash > 0) {
       this.ticketCreation.note += ' Pay with cash: ' + this.round(cash) + '.';
@@ -151,8 +170,14 @@ export class CheckOutDialogComponent {
     if (returned > 0) {
       this.ticketCreation.note += ' Return: ' + this.round(returned) + '.';
     }
-    this.shoppingCartService.createTicketAndPrintReceipts(this.ticketCreation, voucher,
-      this.requestedInvoice, this.requestedGiftTicket, this.requestedDataProtectionAct)
+    this.shoppingCartService
+      .createTicketAndPrintReceipts(
+        this.ticketCreation,
+        voucher,
+        this.requestedInvoice,
+        this.requestedGiftTicket,
+        this.requestedDataProtectionAct,
+      )
       .subscribe(() => this.dialogRef.close(true));
   }
 
@@ -160,5 +185,4 @@ export class CheckOutDialogComponent {
     // TODO pendiente de calcular. Hace falta tener al usuario totalmente completado
     return true;
   }
-
 }

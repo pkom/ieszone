@@ -1,0 +1,79 @@
+@import '_mixins';
+
+full-calendar::ng-deep {
+  height: 100%;
+  .fc-scroller {
+    overflow: hidden !important;
+    color: color(secondary);
+  }
+  table {
+    border: none !important;
+    .fc-col-header-cell {
+      text-align: end;
+      padding-right: size(padding, lg);
+    }
+    a.fc-col-header-cell-cushion {
+      font-family: aBold;
+      font-size: 12px;
+      font-variant: all-petite-caps;
+    }
+    td,
+    th {
+      border: none;
+    }
+    .fc-daygrid-body {
+      background: transparent;
+    }
+    tbody {
+      tr {
+        td.fc-daygrid-day {
+          padding: size(padding);
+          &.fc-day-today {
+            background: transparent;
+            position: relative;
+            &::after {
+              @include pseudo('Today');
+              top: 3vh;
+              left: 2vw;
+              font-size: 10px;
+              font-family: mBold;
+              color: color(warn);
+            }
+          }
+          div.fc-daygrid-day-frame {
+            border-radius: 4px;
+            background-color: color(cal, cell);
+            a.fc-daygrid-day-number {
+              font-family: aRegular;
+              padding: size(padding);
+            }
+          }
+        }
+        td.fc-day-other {
+          div.fc-daygrid-day-frame {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+  .fc-today-button {
+    font-variant: small-caps;
+    font-family: aRegular;
+    background: color(secondary);
+    border: none;
+  }
+  .fc-button-group {
+    button {
+      background: transparent;
+      color: color(secondary);
+    }
+  }
+  .fc-event-title {
+    font-family: mRegular;
+    font-size: size(font);
+  }
+  .center {
+    text-align: center;
+  }
+}

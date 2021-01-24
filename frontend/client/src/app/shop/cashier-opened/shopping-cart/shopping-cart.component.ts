@@ -1,17 +1,17 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
-import {ShoppingCartService} from './shopping-cart.service';
-import {Shopping} from './shopping.model';
-import {CheckOutDialogComponent} from './check-out-dialog.component';
-import {MatDialog} from '@angular/material/dialog';
-import {ShoppingState} from './shopping-state.model';
-import {NumberDialogComponent} from '@shared/dialogs/number-dialog.component';
+import { ShoppingCartService } from './shopping-cart.service';
+import { Shopping } from './shopping.model';
+import { CheckOutDialogComponent } from './check-out-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ShoppingState } from './shopping-state.model';
+import { NumberDialogComponent } from '@shared/dialogs/number-dialog.component';
 
 @Component({
   selector: 'app-shopping-cart',
   styleUrls: ['shopping-cart.component.css'],
-  templateUrl: 'shopping-cart.component.html'
+  templateUrl: 'shopping-cart.component.html',
 })
 export class ShoppingCartComponent implements OnInit {
   static SHOPPING_CART_NUM = 4;
@@ -19,14 +19,25 @@ export class ShoppingCartComponent implements OnInit {
   barcode: string;
   barcodes: Observable<number[]> = of([]);
 
-  displayedColumns = ['id', 'description', 'retailPrice', 'amount', 'discount', 'total', 'actions'];
+  displayedColumns = [
+    'id',
+    'description',
+    'retailPrice',
+    'amount',
+    'discount',
+    'total',
+    'actions',
+  ];
   shoppingCart: Shopping[] = [];
   indexShoppingCart = 0;
   totalShoppingCart = 0;
   private shoppingCartList: Array<Array<Shopping>> = [];
-  @ViewChild('code', {static: true}) private elementRef: ElementRef;
+  @ViewChild('code', { static: true }) private elementRef: ElementRef;
 
-  constructor(private dialog: MatDialog, private shoppingCartService: ShoppingCartService) {
+  constructor(
+    private dialog: MatDialog,
+    private shoppingCartService: ShoppingCartService,
+  ) {
     for (let i = 0; i < ShoppingCartComponent.SHOPPING_CART_NUM; i++) {
       this.shoppingCartList.push([]);
     }
@@ -49,12 +60,10 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   addBarcode(barcode): void {
-    this.shoppingCartService
-      .read(barcode)
-      .subscribe(newShopping => {
-        this.shoppingCart.push(newShopping);
-        this.synchronizeShoppingCart();
-      });
+    this.shoppingCartService.read(barcode).subscribe((newShopping) => {
+      this.shoppingCart.push(newShopping);
+      this.synchronizeShoppingCart();
+    });
     this.elementRef.nativeElement.focus();
   }
 
@@ -78,9 +87,10 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   updateDiscount(shopping: Shopping): void {
-    this.dialog.open(NumberDialogComponent, {data: shopping.discount})
+    this.dialog
+      .open(NumberDialogComponent, { data: shopping.discount })
       .afterClosed()
-      .subscribe(result => {
+      .subscribe((result) => {
         if (result) {
           shopping.discount = result;
           if (shopping.discount < 0) {
@@ -96,12 +106,13 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   updateTotal(shopping: Shopping): void {
-    this.dialog.open(NumberDialogComponent, {data: shopping.total})
+    this.dialog
+      .open(NumberDialogComponent, { data: shopping.total })
       .afterClosed()
-      .subscribe(result => {
+      .subscribe((result) => {
         if (result) {
           shopping.total = result;
-          if (shopping.total > (shopping.retailPrice * shopping.amount)) {
+          if (shopping.total > shopping.retailPrice * shopping.amount) {
             shopping.total = shopping.retailPrice * shopping.amount;
           }
           if (shopping.total < 0) {
@@ -121,7 +132,6 @@ export class ShoppingCartComponent implements OnInit {
     this.synchronizeShoppingCart();
   }
 
-
   checkboxState(state: ShoppingState): boolean {
     return state === ShoppingState.COMMITTED;
   }
@@ -135,7 +145,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   isEmpty(): boolean {
-    return (!this.shoppingCart || this.shoppingCart.length === 0);
+    return !this.shoppingCart || this.shoppingCart.length === 0;
   }
 
   exchangeShoppingCart(): void {
@@ -146,13 +156,14 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   checkOut(): void {
-    this.dialog.open(CheckOutDialogComponent, {data: this.shoppingCart}).afterClosed().subscribe(
-      result => {
+    this.dialog
+      .open(CheckOutDialogComponent, { data: this.shoppingCart })
+      .afterClosed()
+      .subscribe((result) => {
         if (result) {
           this.ngOnInit();
         }
-      }
-    );
+      });
   }
 
   createBudget(): void {
@@ -166,5 +177,4 @@ export class ShoppingCartComponent implements OnInit {
   addOffer(offer): void {
     // TODO add offer
   }
-
 }

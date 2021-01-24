@@ -1,4 +1,3 @@
-import { UserRole } from '../../../../../backend/enums';
 import { Role } from './role.model';
 
 export interface User {

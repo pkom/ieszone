@@ -1,0 +1,15 @@
+<div class="forum">
+  <iz-list [@listAnimation]="forumList.length" [items]="forumList"></iz-list>
+  <form [formGroup]="commentForm">
+    <iz-input
+      name="Leave Comment"
+      [control]="commentForm.controls.description"
+    ></iz-input>
+    <img
+      draggable="false"
+      src="assets/icons/send-empty.svg"
+      onerror="this.src='assets/images/place-small.svg'"
+      (click)="addcomment()"
+    />
+  </form>
+</div>

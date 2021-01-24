@@ -1,0 +1,22 @@
+<div class="todo-container">
+  <h1>My ToDo List</h1>
+
+  <form [formGroup]="todoForm">
+    <div class="select"></div>
+    <iz-input
+      name="Add a Task"
+      [control]="todoForm.controls.description"
+    ></iz-input>
+    <span class="material-icons" (click)="addTodo()"> add </span>
+  </form>
+
+  <div class="row">
+    <iz-list
+      *ngIf="mapped"
+      [items]="todoList"
+      class="col-sm-12"
+      (primaryAction)="primaryClick($event)"
+      (secondaryAction)="secondaryClick($event)"
+    ></iz-list>
+  </div>
+</div>

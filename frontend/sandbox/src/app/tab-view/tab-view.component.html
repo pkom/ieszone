@@ -1,0 +1,45 @@
+<div class="page">
+  <h1>Tabs and Accordian</h1>
+  <div class="case">
+    <h5>1. Tab with Routing</h5>
+    <div class="row between-xs">
+      <iz-tab [tabs]="tabs"></iz-tab>
+    </div>
+  </div>
+  <div class="case">
+    <h5>2. Accordian</h5>
+    <div class="row">
+      <iz-expand
+        [template]="listTemplate"
+        [multi]="true"
+        [items]="items"
+        class="col-sm-12"
+      ></iz-expand>
+    </div>
+  </div>
+</div>
+
+<ng-template #listTemplate let-content>
+  <ul>
+    <li *ngFor="let list of content">
+      <p>{{ list.lesson }}</p>
+      <p>{{ list.chapter }}</p>
+      <p class="actions">
+        <img
+          [src]="
+            list.staffCompletion
+              ? 'assets/icons/check.svg'
+              : 'assets/icons/uncheck.svg'
+          "
+        />
+        <img
+          [src]="
+            list.studentCompletion
+              ? 'assets/icons/check.svg'
+              : 'assets/icons/uncheck.svg'
+          "
+        />
+      </p>
+    </li>
+  </ul>
+</ng-template>

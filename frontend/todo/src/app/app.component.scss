@@ -1,0 +1,29 @@
+@import '_mixins';
+
+.todo-container {
+  h1 {
+    color: color();
+  }
+  form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    .select {
+      background: #78c2a4;
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+    }
+    sz-input {
+      flex-grow: 1;
+      margin: 0 20px;
+    }
+    .material-icons {
+      color: color(secondary);
+      cursor: pointer;
+    }
+  }
+  .row {
+    padding: 0;
+  }
+}

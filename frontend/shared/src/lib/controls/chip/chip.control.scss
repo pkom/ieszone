@@ -1,0 +1,13 @@
+@import '_mixins';
+
+mat-form-field {
+  width: 100%;
+}
+.prefix {
+  margin-left: -6px;
+  margin-right: 4px;
+}
+mat-chip {
+  background: transparent !important;
+  font-family: mRegular;
+}

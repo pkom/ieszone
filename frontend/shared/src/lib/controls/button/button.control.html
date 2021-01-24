@@ -1,0 +1,10 @@
+<button
+  mat-button
+  [ngClass]="[button[type],icon && !name?'icon':'no-icon']"
+  [color]="color"
+  [disabled]="disabled"
+>
+  <mat-icon *ngIf="icon && position=='prefix'">{{icon}}</mat-icon>
+  {{name}}
+  <mat-icon *ngIf="icon && position=='suffix'">{{icon}}</mat-icon>
+</button>

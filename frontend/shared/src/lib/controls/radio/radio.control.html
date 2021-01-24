@@ -1,0 +1,15 @@
+<label id="radio-label">{{name}}</label>
+<mat-radio-group
+  aria-labelledby="radio-label"
+  [required]="required"
+  [color]="color"
+  [formControl]="control"
+>
+  <mat-radio-button
+    *ngFor="let option of options"
+    [checked]="option===initialValue"
+    [value]="option"
+  >
+    {{option | titlecase}}
+  </mat-radio-button>
+</mat-radio-group>

@@ -1,0 +1,69 @@
+<mat-list>
+  <div mat-subheader *ngIf="name">{{name}}</div>
+  <mat-list-item
+    [ngClass]="{'reverse': item.reverse}"
+    *ngFor="let item of items; let i = index"
+    [style.background]="item.mainBg"
+  >
+    <div class="action" *ngIf="item.primaryAction || item.secondaryAction">
+      <mat-icon
+        *ngIf="item.primaryAction?.icon"
+        [style.color]="item.primaryAction?.color"
+        (click)="primaryAction.emit(i)"
+        >{{item.primaryAction?.icon}}</mat-icon
+      >
+      <mat-icon
+        *ngIf="item.secondaryAction?.icon"
+        [style.color]="item.secondaryAction?.color"
+        (click)="secondaryAction.emit(i)"
+        >{{item.secondaryAction?.icon}}</mat-icon
+      >
+    </div>
+    <div
+      class="priority"
+      *ngIf="item.color"
+      [style.background]="item.color"
+    ></div>
+    <div
+      class="hero"
+      (click)="heroAction.emit(i)"
+      [style.background]="item.heroBg"
+      *ngIf="item.icon || item.img || item.heroTitle"
+    >
+      <ng-container *ngIf="item.icon; else elseTemplate">
+        <mat-icon>{{item.icon}}</mat-icon>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <img
+          draggable="false"
+          *ngIf="item.img"
+          mat-card-sm-image
+          [src]="item.img"
+          onerror="this.src='assets/images/place-small.svg'"
+        />
+      </ng-template>
+      <div class="hero-text" *ngIf="item.heroTitle">
+        <h5>{{item.heroTitle}}</h5>
+        <p *ngIf="item.heroSubtitle">{{item.heroSubtitle}}</p>
+      </div>
+    </div>
+    <h5 [style.text-align]="item.align" *ngIf="item.title" mat-line>
+      {{item.title}}
+    </h5>
+    <p
+      [style.text-align]="item.align"
+      *ngIf="item.description"
+      mat-line
+      [innerHtml]="item.description"
+    ></p>
+    <p
+      [style.text-align]="item.align"
+      *ngIf="template && item.content"
+      mat-line
+    >
+      <ng-container
+        *ngTemplateOutlet="template; context: { $implicit: item.content }"
+      ></ng-container>
+    </p>
+  </mat-list-item>
+</mat-list>

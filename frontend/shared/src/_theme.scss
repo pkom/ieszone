@@ -1,0 +1,150 @@
+@import '_variables';
+@import '_mixins';
+@import '~@angular/material/theming';
+// A good material palette tool: http://mcg.mbitson.com/
+// 100 (Lighter): Adjusted for disabled color
+// 200: Adjusted for secondary disabled color
+// 300: Adjusted for button hover background
+// 400: Adjusted for button normal background
+// A100: Adjusted for background
+$sz-primary: (
+  50: #e3f2fd,
+  100: #bbdefb,
+  200: #90caf9,
+  300: #64b5f6,
+  400: #42a5f5,
+  500: #1976d2,
+  600: #1976d2,
+  700: #1976d2,
+  800: #1565c0,
+  900: #0d47a1,
+  A50: #c0c0b2,
+  A100: #ffffff,
+  A200: #3478ff,
+  A400: #0156ff,
+  A700: #004de6,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+// 700 (Darker): Adjusted for active button border color
+// 900: Adjusted for active button background color
+// A100: Adjusted for favorites color
+// A200 adjusted for default text input border
+$sz-accent: (
+  50: #5cb0310f,
+  100: #5cb0311a,
+  200: #5cb03133,
+  300: #5cb03166,
+  400: #509850,
+  500: #509850,
+  600: #509850,
+  700: #509850,
+  800: #5cb031eb,
+  900: #5cb031,
+  A50: #f5f4e9,
+  A100: #f6c103,
+  A200: #c9c992,
+  A300: #ff6600,
+  A310: #f39351,
+  A400: #80e6ff,
+  A700: #67e1ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$sz-warn: (
+  50: #ff6e6e,
+  100: #ff6e6e,
+  200: #ff6e6e,
+  300: #ff6e6e,
+  400: #ff6e6e,
+  500: #b92d00,
+  600: #b92d00,
+  700: #b92d00,
+  800: #b92d00,
+  900: #b92d00,
+  A100: #ffffff,
+  A200: #fff2f2,
+  A400: #ffbfbf,
+  A700: #ffa6a6,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+// See ~@angular/material/_theming.scss:$mat-light-theme-foreground for possible keys & defaults values
+$sz-light-theme-foreground: (
+  base: color(black),
+);
+
+$sz-light-theme-background: (
+  background: color(white),
+);
+
+$sz-light-theme: (
+  primary: mat-palette($sz-primary),
+  accent: mat-palette($sz-accent),
+  warn: mat-palette($sz-warn),
+  is-dark: false,
+  foreground: map_merge($mat-light-theme-foreground, $sz-light-theme-foreground),
+  background: map_merge($mat-light-theme-background, $sz-light-theme-background),
+);
+
+$sz-dark-theme-foreground: (
+  base: color(white),
+);
+
+$sz-dark-theme-background: (
+  background: color(black),
+);
+
+$sz-dark-theme: (
+  primary: mat-palette($sz-primary),
+  accent: mat-palette($sz-accent),
+  warn: mat-palette($sz-warn),
+  is-dark: true,
+  foreground: map_merge($mat-dark-theme-foreground, $sz-dark-theme-foreground),
+  background: map_merge($mat-dark-theme-background, $sz-dark-theme-background),
+);

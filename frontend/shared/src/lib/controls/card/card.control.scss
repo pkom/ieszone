@@ -1,0 +1,43 @@
+@import '_mixins';
+
+mat-card::ng-deep {
+  img {
+    position: absolute;
+    right: size(margin, lg);
+    top: size(margin, lg);
+    width: size(image, card);
+  }
+  mat-card-header,
+  mat-card-content,
+  mat-card-actions {
+    &:not(.no-image) {
+      width: 80%;
+    }
+  }
+  mat-card-title,
+  button {
+    font-family: mBold;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    color: color(fg);
+  }
+  mat-card-subtitle {
+    font-family: mLight;
+  }
+  .mat-card-header-text {
+    margin: 0;
+  }
+  .tag {
+    position: absolute;
+    right: size(margin, lg);
+    bottom: size(margin, lg);
+    font-family: mLight;
+    font-size: 12px;
+    width: size(image, card);
+    text-align: center;
+    color: color();
+    &.no-image {
+      bottom: unset;
+    }
+  }
+}

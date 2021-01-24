@@ -1,0 +1,42 @@
+<mat-form-field
+  [appearance]="appearance"
+  [floatLabel]="'always'"
+  [color]="color"
+>
+  <mat-label>{{name}}</mat-label>
+  <span *ngIf="telCode" matPrefix>{{ telCode || '+1' }} &nbsp;</span>
+  <input
+    (focus)="matcher.focused=true"
+    (blur)="matcher.focused=false"
+    matInput
+    autocomplete="off"
+    [attr.maxlength]="length?length:null"
+    [required]="required"
+    [formControl]="control"
+    [type]="hide ? 'password' : type === 'password' ? 'text' : type"
+    [errorStateMatcher]="matcher"
+  />
+  <mat-icon
+    *ngIf="clearable && !disabled && control?.value && type!=='password'"
+    matSuffix
+    class="input-icon"
+    (click)="control.reset()"
+    >close</mat-icon
+  >
+  <mat-icon
+    class="input-icon"
+    matSuffix
+    (click)="hide = !hide"
+    *ngIf="type==='password' && !disabled"
+    >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon
+  >
+  <mat-hint align="start">
+    <span [innerHTML]="hint"></span>
+  </mat-hint>
+  <mat-hint *ngIf="length" align="end"
+    >{{control?.value?.length || 0}} / {{length}}</mat-hint
+  >
+  <mat-error *ngIf="control.errors && !matcher.focused">
+    <span [innerHTML]="errorHint()"></span>
+  </mat-error>
+</mat-form-field>

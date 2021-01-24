@@ -1,10 +1,10 @@
-import {Observable, of} from 'rxjs';
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {SharedArticleService} from './services/shared.article.service';
+import { Observable, of } from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SharedArticleService } from './services/shared.article.service';
 
 @Component({
   selector: 'app-search-by-barcode',
-  templateUrl: './search-by-barcode.component.html'
+  templateUrl: './search-by-barcode.component.html',
 })
 export class SearchByBarcodeComponent {
   barcodes: Observable<number[]> = of([]);
@@ -12,8 +12,7 @@ export class SearchByBarcodeComponent {
   @Input() barcode: string;
   @Output() add = new EventEmitter<string>();
 
-  constructor(private sharedArticleService: SharedArticleService) {
-  }
+  constructor(private sharedArticleService: SharedArticleService) {}
 
   public onSelect(value): void {
     this.add.emit(value);

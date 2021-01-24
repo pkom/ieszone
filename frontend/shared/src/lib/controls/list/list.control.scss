@@ -1,0 +1,79 @@
+@import '_mixins';
+
+mat-list::ng-deep {
+  .mat-list-item-content {
+    padding: 0 !important;
+    flex-direction: row-reverse !important;
+    height: 100% !important;
+  }
+  .mat-list-text {
+    margin-left: size(margin);
+    margin-right: size(margin);
+  }
+  mat-list-item {
+    background: color(disabled);
+    margin-bottom: size(margin);
+    min-height: 72px !important;
+    &.reverse {
+      & > .mat-list-item-content {
+        flex-direction: row !important;
+      }
+      .mat-list-text {
+        padding-left: size(padding);
+      }
+    }
+    p {
+      font-family: mRegular;
+      font-size: size(font) !important;
+    }
+  }
+  h5 {
+    color: color(secondary);
+  }
+}
+
+.hero {
+  width: 80px;
+  height: inherit;
+  display: flex;
+  background: color(secondary, light);
+  img,
+  mat-icon {
+    width: size(icon);
+    min-width: size(icon, min);
+    height: auto;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+  }
+}
+
+.priority {
+  width: size(line, bold);
+  height: inherit;
+  position: absolute;
+}
+
+.action {
+  text-align: center;
+  padding-right: calc(#{size(padding)} * 0.5);
+  mat-icon {
+    font-size: size();
+    width: size();
+    height: size();
+    &:first-of-type {
+      margin-bottom: calc(#{size(margin)} * 0.5);
+    }
+    &:last-of-type {
+      margin-top: calc(#{size(margin)} * 0.5);
+    }
+  }
+}

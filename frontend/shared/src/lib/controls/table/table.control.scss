@@ -1,0 +1,32 @@
+@import '_mixins';
+
+mat-table {
+  background-color: transparent;
+  width: 100%;
+  font-family: mRegular;
+  mat-cell {
+    color: color(fg);
+  }
+}
+
+mat-header-row {
+  border-bottom: size(line) solid color(disabled, dark);
+  font-family: aBold;
+}
+
+mat-header-cell,
+mat-cell {
+  &:first-of-type {
+    padding-left: size(padding);
+  }
+  &:last-of-type {
+    padding-right: size(padding);
+  }
+}
+
+.vertical-header {
+  font-family: aBold;
+  font-size: 12px;
+  font-weight: 500;
+  color: color(vertical, header) !important;
+}

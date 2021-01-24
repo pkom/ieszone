@@ -38,6 +38,53 @@
 // css variables
 :root {
   //colors
-  --primary-app-color: #1976d2;
-  --secondary-app-color: #616161;
+  --white-base-color: #f4f4f4;
+  --black-base-color: #1e1f21;
+  --fg-base-color: #1e1f21;
+  --view-base-color: white;
+  --primary-base-color: #1976d2;
+  --secondary-base-color: #616161;
+  --secondary-light-color: #c4c4c4;
+  --accent-base-color: #7f6196;
+  --error-base-color: #b92d00;
+  --warn-base-color: #c2b678;
+  --gentle-base-color: #78c2a4;
+  --bg-base-color: #eeeeee;
+  --nav-base-color: #151b26;
+  --active-base-color: #444951;
+  --hover-base-color: #0b0f15;
+  --hover-main-color: #0b0f15;
+  --disabled-dark-color: #888;
+  --disabled-base-color: #dddddd;
+  --disabled-light-color: #dcdcdc;
+  --field-light-color: gainsboro;
+  --vertical-header-color: rgba(0, 0, 0, 0.54);
+  --cal-cell-color: #ffffff;
+
+  // Sizes
+  --base-base-size: 16px;
+  --line-bold-size: 8px;
+  --line-thick-size: 4px;
+  --line-base-size: 2px;
+  --margin-base-size: 1vw;
+  --margin-lg-size: 2vw;
+  --padding-base-size: 1vw;
+  --padding-lg-size: 2vw;
+  --subnav-height-size: 30px;
+  --image-card-size: 5vw;
+  --font-base-size: 12px;
+  --icon-base-size: 2vw;
+  --icon-min-size: 25px;
 }
+
+// Mixin breakpoint
+$breakpoints: (
+  'phone': 400px,
+  'phone-wide': 480px,
+  'phablet': 560px,
+  'tablet-small': 640px,
+  'tablet': 768px,
+  'tablet-wide': 1024px,
+  'desktop': 1248px,
+  'desktop-wide': 1440px,
+);

@@ -1,0 +1,134 @@
+<div class="page">
+  <h1>Input Fields</h1>
+
+  <div class="case">
+    <h5>1. Simple Input</h5>
+    <div class="row between-xs">
+      <iz-input
+        class="col-sm-5"
+        clearable="true"
+        length="20"
+        hint="Don't disclose <strong>personal info</strong>"
+        name="Input Type - Text"
+      ></iz-input>
+      <iz-textarea
+        class="col-sm-5"
+        name="Textarea"
+        length="255"
+        hint="Most attributes are <strong>similar</strong>"
+      >
+      </iz-textarea>
+    </div>
+  </div>
+
+  <div class="case">
+    <h5>2. Input Types and Error</h5>
+    <div class="row">
+      <iz-input
+        class="col-sm-5"
+        required="true"
+        type="email"
+        name="Email"
+      ></iz-input>
+      <iz-input
+        class="col-sm-5"
+        type="password"
+        name="Password"
+        [control]="sampleControl"
+      ></iz-input>
+    </div>
+  </div>
+
+  <div class="case">
+    <h5>3. Prefix and Suffix</h5>
+    <div class="row">
+      <iz-input
+        class="col-sm-3"
+        type="tel"
+        name="Telephone"
+        telCode="+1"
+        initialValue="458-689-1435"
+        clearable="true"
+      ></iz-input>
+      <iz-input class="col-sm-3" name="Simple Date" type="date"></iz-input>
+    </div>
+  </div>
+
+  <div class="case">
+    <h5>4. Checkbox</h5>
+    <div class="row between-xs">
+      <iz-checkbox name="Simple"></iz-checkbox>
+      <iz-checkbox name="Indeterminate" [indeterminate]="true"></iz-checkbox>
+      <iz-checkbox
+        name="Disabled"
+        [initialValue]="true"
+        [disabled]="true"
+      ></iz-checkbox>
+      <iz-checkbox
+        name="Checked Warn"
+        [initialValue]="true"
+        color="warn"
+      ></iz-checkbox>
+    </div>
+  </div>
+
+  <div class="case">
+    <h5>5. Radio Button</h5>
+    <div class="row">
+      <iz-radio
+        name="Choose Gender"
+        [options]="options"
+        [control]="radioControl"
+      ></iz-radio>
+    </div>
+  </div>
+
+  <div class="case">
+    <h5>6. Select options</h5>
+    <div class="row between-xs">
+      <iz-select
+        [options]="selectOptions"
+        class="col-sm-5"
+        hint="Choose your <strong>priority</strong>"
+        name="Select params similar to input type"
+      ></iz-select>
+    </div>
+  </div>
+
+  <div class="case">
+    <h5>7. Responsiveness, Appearance and Color</h5>
+    <div class="row">
+      <iz-input
+        class="col-sm-4"
+        name="Standard Input - Disabled"
+        appearance="standard"
+        color="primary"
+        disabled="true"
+      ></iz-input>
+    </div>
+    <div class="row">
+      <iz-input
+        class="col-sm-6"
+        name="Fill Input"
+        appearance="fill"
+        color="accent"
+      ></iz-input>
+    </div>
+    <div class="row">
+      <iz-input
+        class="col-sm-8"
+        name="Outline Input"
+        appearance="outline"
+        color="warn"
+      ></iz-input>
+    </div>
+    <div class="row">
+      <iz-input
+        class="col-xs-12 col-md-6 col-lg-4"
+        name="Legacy Input - Required"
+        appearance="legacy"
+        required="true"
+      ></iz-input>
+    </div>
+  </div>
+</div>

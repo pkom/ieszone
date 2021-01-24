@@ -1,0 +1,14 @@
+<mat-chip
+  [color]="color"
+  [selectable]="selectable"
+  [selected]="selected"
+  [removable]="removable"
+  (removed)="remove()"
+  [ngStyle]="selectedBg"
+>
+  <mat-icon [style.color]="color" *ngIf="prefix" class="prefix"
+    >{{prefix}}</mat-icon
+  >
+  {{name}}
+  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+</mat-chip>

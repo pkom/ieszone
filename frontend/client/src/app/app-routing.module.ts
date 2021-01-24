@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './shared/layout/not-found/not-found.component';
+import { LoginComponent } from './shared/layout/login/login.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home/adviser' },
   {
     path: 'home',
@@ -13,6 +16,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./shop/shop.module').then((module) => module.ShopModule),
   }, // lazy load
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

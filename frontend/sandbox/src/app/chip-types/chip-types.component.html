@@ -1,0 +1,25 @@
+<div class="page">
+  <h1>Chip Types</h1>
+  <div class="case">
+    <h5>1. Basic Chip</h5>
+    <div class="row between-xs">
+      <iz-chiplist [list]="basicChip"></iz-chiplist>
+    </div>
+  </div>
+  <div class="case">
+    <h5>2. Editable Chip Input</h5>
+    <div class="row between-xs">
+      <iz-chiplist
+        class="col-sm-12"
+        editable="true"
+        [list]="basicChip"
+      ></iz-chiplist>
+    </div>
+  </div>
+  <div class="case">
+    <h5>3. Chip List</h5>
+    <div class="row between-xs">
+      <iz-chiplist [list]="basicChipList"></iz-chiplist>
+    </div>
+  </div>
+</div>

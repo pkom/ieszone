@@ -105,7 +105,7 @@ export class ParseRayuelaTeachers {
   }
   private addTeacherToDepartment(dni: string, department: string): void {
     const idxDepartment = this.departmentsDTO.findIndex(
-      itemDepartment => itemDepartment.department === department,
+      (itemDepartment) => itemDepartment.department === department,
     );
     if (idxDepartment !== -1) {
       this.departmentsDTO[idxDepartment].teachers.push(dni);
@@ -121,7 +121,7 @@ export class ParseRayuelaTeachers {
   private addTeacherToGroup(dni: string, groups: string[]): void {
     for (const group of groups) {
       const idxGroup = this.groupsDTO.findIndex(
-        itemGroup => itemGroup.group === group,
+        (itemGroup) => itemGroup.group === group,
       );
       if (idxGroup !== -1) {
         this.groupsDTO[idxGroup].teachers.push(dni);

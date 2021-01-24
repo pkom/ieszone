@@ -1,0 +1,33 @@
+<mat-form-field
+  [appearance]="appearance"
+  [floatLabel]="'always'"
+  [color]="color"
+>
+  <mat-label>{{name}}</mat-label>
+  <textarea
+    matInput
+    (focus)="matcher.focused=true"
+    (blur)="matcher.focused=false"
+    autocomplete="off"
+    [attr.maxlength]="length?length:null"
+    [required]="required"
+    [formControl]="control"
+    [errorStateMatcher]="matcher"
+  ></textarea>
+  <mat-hint align="start">
+    <span [innerHTML]="hint"></span>
+  </mat-hint>
+  <mat-hint *ngIf="length" align="end"
+    >{{control?.value?.length || 0}} / {{length}}</mat-hint
+  >
+  <mat-error *ngIf="control.errors && !matcher.focused">
+    <span [innerHTML]="errorHint()"></span>
+  </mat-error>
+  <mat-icon
+    *ngIf="clearable && control?.value"
+    matSuffix
+    class="input-icon"
+    (click)="control.reset()"
+    >close</mat-icon
+  >
+</mat-form-field>

@@ -1,0 +1,39 @@
+<div class="view-port">
+  <iz-logo [poweredBy]="false" size="large"></iz-logo>
+  <div class="hero">
+    <img src="assets/images/login-cover.svg" alt="School" />
+    <div class="login">
+      <h1>{{ this.center }}</h1>
+      <form [formGroup]="loginForm">
+        <div class="fields">
+          <iz-input
+            name="Usuario"
+            required="true"
+            [control]="loginForm.controls.userName"
+          ></iz-input>
+          <iz-input
+            name="Contraseña"
+            type="password"
+            required="true"
+            [control]="loginForm.controls.password"
+          ></iz-input>
+          <iz-select
+            name="Curso"
+            required="true"
+            [control]="loginForm.controls.courseId"
+            [options]="courses"
+          ></iz-select>
+        </div>
+        <!--         <div class="pass">
+          <iz-checkbox [initialValue]="true" name="Recuérdame"></iz-checkbox>
+          <span class="link">¿Olvidaste la contraseña?</span>
+        </div> -->
+        <iz-button
+          [disabled]="!loginForm.valid"
+          name="Login"
+          (click)="login()"
+        ></iz-button>
+      </form>
+    </div>
+  </div>
+</div>

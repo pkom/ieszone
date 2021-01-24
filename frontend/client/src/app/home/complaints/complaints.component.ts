@@ -1,21 +1,23 @@
-import {Component} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {of} from 'rxjs';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { of } from 'rxjs';
 
-import {ComplaintCreationDialogComponent} from './complaint-creation-dialog.component';
-import {ComplaintService} from './complaint.service';
-import {Complaint} from './complaint.model';
-import {ReadDetailDialogComponent} from '@shared/dialogs/read-detail.dialog.component';
+import { ComplaintCreationDialogComponent } from './complaint-creation-dialog.component';
+import { ComplaintService } from './complaint.service';
+import { Complaint } from './complaint.model';
+import { ReadDetailDialogComponent } from '@shared/dialogs/read-detail.dialog.component';
 
 @Component({
-  templateUrl: 'complaints.component.html'
+  templateUrl: 'complaints.component.html',
 })
 export class ComplaintsComponent {
   title = 'Complaints management';
   complaints = of([]);
 
-  constructor(private dialog: MatDialog, private complaintService: ComplaintService) {
-  }
+  constructor(
+    private dialog: MatDialog,
+    private complaintService: ComplaintService,
+  ) {}
 
   create(): void {
     this.dialog
@@ -32,8 +34,8 @@ export class ComplaintsComponent {
     this.dialog.open(ReadDetailDialogComponent, {
       data: {
         title: 'Complaint Details',
-        object: this.complaintService.read(complaint.id)
-      }
+        object: this.complaintService.read(complaint.id),
+      },
     });
   }
 

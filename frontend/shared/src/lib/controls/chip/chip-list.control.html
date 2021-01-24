@@ -1,0 +1,37 @@
+<ng-container *ngIf="editable; else elseTemplate">
+  <mat-form-field>
+    <mat-chip-list #editList *ngIf="list">
+      <iz-chip
+        *ngFor="let chip of list"
+        [name]="chip.name"
+        [removable]="editable"
+        [selectable]="chip.selectable"
+        [selected]="chip.selected"
+        [color]="chip.color"
+        [prefix]="chip.prefix"
+        (chipRemoved)="remove(chip)"
+      ></iz-chip>
+      <input
+        *ngIf="editable"
+        [matChipInputFor]="editList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+  </mat-form-field>
+</ng-container>
+<ng-template #elseTemplate>
+  <mat-chip-list *ngIf="list">
+    <iz-chip
+      *ngFor="let chip of list"
+      [name]="chip.name"
+      [removable]="chip.removable"
+      [selectable]="chip.selectable"
+      [selected]="chip.selected"
+      [color]="chip.color"
+      [prefix]="chip.prefix"
+      (chipRemoved)="remove(chip)"
+    ></iz-chip>
+  </mat-chip-list>
+</ng-template>

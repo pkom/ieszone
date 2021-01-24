@@ -1,0 +1,26 @@
+<mat-table [dataSource]="dataSource">
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  <ng-container [matColumnDef]="col.name" *ngFor="let col of columnDefinitions">
+    <mat-header-cell
+      mat-header-cell
+      *matHeaderCellDef
+      [ngStyle]="col.style"
+      [style.justify-content]="col.align"
+    >
+      {{col.displayName || col.name | titlecase}}</mat-header-cell
+    >
+    <mat-cell
+      [ngStyle]="col.style"
+      [style.justify-content]="col.align"
+      mat-cell
+      [class.vertical-header]="col.isHeader"
+      *matCellDef="let element"
+    >
+      {{element[col.name]}}</mat-cell
+    >
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

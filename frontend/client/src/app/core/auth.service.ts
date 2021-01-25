@@ -13,7 +13,7 @@ import { Role } from '@core/role.model';
   providedIn: 'root',
 })
 export class AuthService {
-  static END_POINT = environment.REST_USER + '/auth/login';
+  static END_POINT = environment.REST_CORE + '/auth/login';
   private user: User;
 
   constructor(private httpService: HttpService, private router: Router) {}

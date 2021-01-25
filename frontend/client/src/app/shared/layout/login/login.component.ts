@@ -29,13 +29,13 @@ export class LoginComponent implements OnInit {
       password: [''],
       courseId: [''],
     });
-    this.generalService.getConfig().subscribe((config) => {
+    this.generalService.config$.subscribe((config) => {
       this.center = config.center;
       this.code = config.code;
       this.defaultCourseId = config.defaultCourse.id;
       this.loginForm.controls['courseId'].setValue(this.defaultCourseId);
     });
-    this.generalService.getCourses().subscribe((courses) => {
+    this.generalService.courses$.subscribe((courses) => {
       this.courses = courses.map((course) => ({
         value: course.id,
         displayValue: course.denomination,

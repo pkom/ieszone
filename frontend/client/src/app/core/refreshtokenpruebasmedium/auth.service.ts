@@ -20,7 +20,7 @@ export class AuthService {
     private router: Router,
     private localStore: PersistanceService,
   ) {
-    this.baseUrl = environment.REST_USER; //..baseUrl;
+    this.baseUrl = environment.REST_CORE; //..baseUrl;
   }
 
   login(data): Observable<boolean> {

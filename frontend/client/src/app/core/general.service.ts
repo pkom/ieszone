@@ -8,13 +8,16 @@ import { Config, Course } from './config.model';
   providedIn: 'root',
 })
 export class GeneralService {
-  static END_POINT_CONFIG = environment.REST_USER + '/configuration';
-  static END_POINT_COURSES = environment.REST_USER + '/courses';
-  static END_POINT_STATUS = environment.REST_USER;
+  static END_POINT_CONFIG = environment.REST_CORE + '/configuration';
+  static END_POINT_COURSES = environment.REST_CORE + '/courses';
+  static END_POINT_STATUS = environment.REST_CORE;
 
   appStatus$ = this.httpService.get(GeneralService.END_POINT_STATUS);
   darkTheme$ = new BehaviorSubject<boolean>(false);
   slider$ = new BehaviorSubject<boolean | string>(false);
+
+  config$ = this.httpService.get(GeneralService.END_POINT_CONFIG);
+  courses$ = this.httpService.get(GeneralService.END_POINT_COURSES);
 
   constructor(private httpService: HttpService) {}
 
@@ -24,13 +27,5 @@ export class GeneralService {
 
   setSliderToggle(sliderTarget: boolean | string): void {
     this.slider$.next(sliderTarget);
-  }
-
-  getConfig(): Observable<Config> {
-    return this.httpService.get(GeneralService.END_POINT_CONFIG);
-  }
-
-  getCourses(): Observable<Course[]> {
-    return this.httpService.get(GeneralService.END_POINT_COURSES);
   }
 }

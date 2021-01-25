@@ -6,5 +6,5 @@ export class EndPoints {
   static CASHIERS = environment.REST_CORE + '/cashiers';
   static CASHIERS_LAST = EndPoints.CASHIERS + '/last';
   static TICKETS = environment.REST_CORE + '/tickets';
-  static COMPLAINTS = environment.REST_CUSTOMER_SUPPORT + '/complaints';
+  static COMPLAINTS = environment.REST_CORE + '/complaints';
 }

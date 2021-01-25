@@ -1,7 +1,7 @@
 <div class="view-port">
-  <iz-logo [poweredBy]="false" size="large"></iz-logo>
+  <iz-logo [poweredBy]="true" size="large"></iz-logo>
   <div class="hero">
-    <img src="assets/images/login-cover.svg" alt="School" />
+    <img src="assets/images/login-cover.svg" alt="Ies" />
     <div class="login">
       <h1>{{ this.center }}</h1>
       <form [formGroup]="loginForm">
@@ -24,15 +24,7 @@
             [options]="courses"
           ></iz-select>
         </div>
-        <!--         <div class="pass">
-          <iz-checkbox [initialValue]="true" name="Recuérdame"></iz-checkbox>
-          <span class="link">¿Olvidaste la contraseña?</span>
-        </div> -->
-        <iz-button
-          [disabled]="!loginForm.valid"
-          name="Login"
-          (click)="login()"
-        ></iz-button>
+        <iz-button name="Login" (click)="login()"></iz-button>
       </form>
     </div>
   </div>

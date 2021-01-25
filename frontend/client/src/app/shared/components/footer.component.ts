@@ -16,8 +16,8 @@ export class FooterComponent {
   constructor() {
     this.version = environment.VERSION;
     this.profile = environment.production ? 'Prod' : 'Dev';
-    this.backEndUser = environment.REST_USER;
+    this.backEndUser = environment.REST_CORE;
     this.backEndCore = environment.REST_CORE;
-    this.backEndCustomerSupport = environment.REST_CUSTOMER_SUPPORT;
+    this.backEndCustomerSupport = environment.REST_CORE;
   }
 }

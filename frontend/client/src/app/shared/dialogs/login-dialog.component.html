@@ -22,8 +22,13 @@
       type="password"
     />
   </mat-form-field>
-  <mat-form-field>
-    <input [(ngModel)]="courseid" matInput placeholder="Curso" type="text" />
+  <mat-form-field appearance="fill">
+    <mat-label>Selecciona curso</mat-label>
+    <mat-select [(value)]="courseid">
+      <mat-option *ngFor="let course of courses" value="course.id">{{
+        course.denomination
+      }}</mat-option>
+    </mat-select>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>

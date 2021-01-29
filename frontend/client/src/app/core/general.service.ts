@@ -16,8 +16,12 @@ export class GeneralService {
   darkTheme$ = new BehaviorSubject<boolean>(false);
   slider$ = new BehaviorSubject<boolean | string>(false);
 
-  config$ = this.httpService.get(GeneralService.END_POINT_CONFIG);
-  courses$ = this.httpService.get(GeneralService.END_POINT_COURSES);
+  config$: Observable<Config> = this.httpService.get(
+    GeneralService.END_POINT_CONFIG,
+  );
+  courses$: Observable<Course[]> = this.httpService.get(
+    GeneralService.END_POINT_COURSES,
+  );
 
   constructor(private httpService: HttpService) {}
 

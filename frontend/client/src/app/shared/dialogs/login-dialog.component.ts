@@ -5,7 +5,8 @@ import { AuthService } from '@core/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { GeneralService } from '@core/general.service';
 import { Course } from '@core/config.model';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, Subject, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Component({
   templateUrl: 'login-dialog.component.html',
@@ -15,8 +16,23 @@ export class LoginDialogComponent implements OnInit {
   username: string;
   password: string;
   courseid: string;
-  courses: Course[];
-  private subscriptions: Subscription = new Subscription();
+
+  error$ = new Subject<string>();
+
+  courses$: Observable<Course[]> = this.generalService.courses$.pipe(
+    catchError((error) => {
+      this.error$.next(error);
+      return of(null);
+    }),
+  );
+
+  defaultCourseId$: Observable<any> = this.generalService.config$.pipe(
+    map((config) => config.defaultCourse.id),
+    catchError((error) => {
+      this.error$.next(error);
+      return of(null);
+    }),
+  );
 
   constructor(
     private generalService: GeneralService,
@@ -26,20 +42,15 @@ export class LoginDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subscriptions.add(
-      this.generalService.config$.subscribe(
-        (config) => (this.courseid = config.defaultCourse.id),
-      ),
-    );
-    this.subscriptions.add(
-      this.generalService.courses$.subscribe(
-        (courses) => (this.courses = courses),
-      ),
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
+    this.generalService.config$
+      .pipe(
+        map((config) => config.defaultCourse.id),
+        catchError((error) => {
+          this.error$.next(error);
+          return of(null);
+        }),
+      )
+      .subscribe((defaultCourseId) => (this.courseid = defaultCourseId));
   }
 
   login(): void {

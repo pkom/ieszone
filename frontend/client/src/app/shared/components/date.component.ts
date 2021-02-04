@@ -3,7 +3,7 @@ import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-date',
-  template: `<a>{{ date | date: 'medium' }}</a>`,
+  template: `<a>{{ date | date: 'medium':'UTC+1':'es' }}</a>`,
   styles: [
     `
       a {

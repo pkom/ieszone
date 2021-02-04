@@ -1,7 +1,13 @@
 <h3 mat-dialog-title>Acceso</h3>
 <mat-dialog-content>
   <mat-form-field>
-    <input [(ngModel)]="username" matInput placeholder="Usuario" type="text" />
+    <input
+      [(ngModel)]="username"
+      matInput
+      placeholder="Usuario"
+      type="text"
+      required
+    />
     <button
       (click)="username = undefined"
       *ngIf="username"
@@ -20,11 +26,12 @@
       matInput
       placeholder="Contraseña"
       type="password"
+      required
     />
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" *ngIf="courses$ | async as courses">
     <mat-label>Selecciona curso</mat-label>
-    <mat-select [value]="courseid">
+    <mat-select [(ngModel)]="courseid">
       <mat-option *ngFor="let course of courses" [value]="course.id">{{
         course.denomination
       }}</mat-option>
@@ -32,6 +39,6 @@
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button (click)="login()" mat-button>Submit</button>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button (click)="login()" mat-button>Enviar</button>
 </mat-dialog-actions>

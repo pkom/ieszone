@@ -10,7 +10,6 @@ export interface Config {
   url: string;
   headMaster: string;
   defaultCourse: Course;
-  selectedCourseId: string;
 }
 
 export interface Course {

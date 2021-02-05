@@ -12,5 +12,5 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
   },
-  "exclude": ["node_modules", "backend", "dist", "**/*spec.ts"]
+  "exclude": ["node_modules", "backend", "scripts", "dist", "**/*spec.ts"]
 }

@@ -10,7 +10,6 @@ registerLocaleData(localeEs);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutModule } from './shared/layout/layout.module';
 
 @NgModule({
   imports: [
@@ -18,7 +17,6 @@ import { LayoutModule } from './shared/layout/layout.module';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
-    LayoutModule,
     // HomeModule,  eager load
     // ShopModule,  eager load
   ],

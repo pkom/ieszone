@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sz-syllabus',
+  selector: 'iz-syllabus',
   templateUrl: './syllabus.component.html',
   styleUrls: ['./syllabus.component.scss'],
 })

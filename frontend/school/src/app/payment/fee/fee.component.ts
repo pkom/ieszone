@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sz-fee',
+  selector: 'iz-fee',
   templateUrl: './fee.component.html',
   styleUrls: ['./fee.component.scss'],
 })

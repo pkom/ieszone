@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sz-exam-schedule',
+  selector: 'iz-exam-schedule',
   templateUrl: './exam-schedule.component.html',
   styleUrls: ['./exam-schedule.component.scss'],
 })

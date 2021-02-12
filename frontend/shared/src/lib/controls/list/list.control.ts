@@ -27,7 +27,7 @@ export class ListControl implements OnInit {
 }
 
 @Component({
-  selector: 'sz-list-select',
+  selector: 'iz-list-select',
   templateUrl: './list-select.control.html',
   styleUrls: ['./list.control.scss'],
 })

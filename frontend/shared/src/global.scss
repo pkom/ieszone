@@ -5,7 +5,7 @@
 @import '_theme';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @include mat-core();
-@include angular-material-theme($sz-light-theme);
+@include angular-material-theme($iz-light-theme);
 
 * {
   padding: 0;
@@ -49,7 +49,7 @@ body {
 }
 
 .dark-theme {
-  @include angular-material-theme($sz-dark-theme);
+  @include angular-material-theme($iz-dark-theme);
   --white-base-color: #f4f4f4;
   --black-base-color: #1e1f21;
   --fg-base-color: #f4f4f4;
@@ -188,7 +188,7 @@ mat-icon {
   }
 }
 
-sz-logo {
+iz-logo {
   user-select: none;
 }
 

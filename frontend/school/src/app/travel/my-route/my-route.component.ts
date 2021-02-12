@@ -4,7 +4,7 @@ import { GoogleMap } from '@angular/google-maps';
 const directionService = new google.maps.DirectionsService();
 
 @Component({
-  selector: 'sz-my-route',
+  selector: 'iz-my-route',
   templateUrl: './my-route.component.html',
   styleUrls: ['./my-route.component.scss'],
 })

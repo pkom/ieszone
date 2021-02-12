@@ -3,21 +3,21 @@
 :host {
   display: flex;
   flex-direction: column;
-  sz-title {
+  iz-title {
     height: 80px;
     justify-content: flex-end;
   }
-  sz-pinned {
+  iz-pinned {
     height: 150px;
     margin-bottom: size(margin);
     background: color(bg);
   }
-  sz-groups {
+  iz-groups {
     flex-grow: 1;
     margin-bottom: size(margin);
     background: color(bg);
   }
-  sz-updates {
+  iz-updates {
     height: 150px;
     background: color(bg);
   }

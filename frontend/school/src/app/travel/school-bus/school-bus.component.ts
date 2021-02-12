@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sz-school-bus',
+  selector: 'iz-school-bus',
   templateUrl: './school-bus.component.html',
   styleUrls: ['./school-bus.component.scss'],
 })

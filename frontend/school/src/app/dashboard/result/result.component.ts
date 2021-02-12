@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sz-result',
+  selector: 'iz-result',
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss'],
 })

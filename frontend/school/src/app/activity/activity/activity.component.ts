@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sz-activity',
+  selector: 'iz-activity',
   templateUrl: './activity.component.html',
   styleUrls: ['./activity.component.scss'],
 })

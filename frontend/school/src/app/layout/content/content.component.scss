@@ -3,16 +3,16 @@
 :host {
   display: flex;
   flex-direction: column;
-  sz-header {
+  iz-header {
     height: 50px;
     border-bottom: size(line, thick) solid color(disabled);
     align-items: center;
   }
-  sz-subnav {
+  iz-subnav {
     height: size(subnav, height);
     align-items: center;
   }
-  sz-viewport {
+  iz-viewport {
     flex-grow: 1;
     background: color(bg);
     overflow: {

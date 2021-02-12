@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sz-field-trip',
+  selector: 'iz-field-trip',
   templateUrl: './field-trip.component.html',
   styleUrls: ['./field-trip.component.scss'],
 })

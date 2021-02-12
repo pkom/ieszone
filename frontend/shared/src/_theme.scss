@@ -7,7 +7,7 @@
 // 300: Adjusted for button hover background
 // 400: Adjusted for button normal background
 // A100: Adjusted for background
-$sz-primary: (
+$iz-primary: (
   50: #e3f2fd,
   100: #bbdefb,
   200: #90caf9,
@@ -45,7 +45,7 @@ $sz-primary: (
 // 900: Adjusted for active button background color
 // A100: Adjusted for favorites color
 // A200 adjusted for default text input border
-$sz-accent: (
+$iz-accent: (
   50: #5cb0310f,
   100: #5cb0311a,
   200: #5cb03133,
@@ -81,7 +81,7 @@ $sz-accent: (
   ),
 );
 
-$sz-warn: (
+$iz-warn: (
   50: #ff6e6e,
   100: #ff6e6e,
   200: #ff6e6e,
@@ -115,36 +115,36 @@ $sz-warn: (
 );
 
 // See ~@angular/material/_theming.scss:$mat-light-theme-foreground for possible keys & defaults values
-$sz-light-theme-foreground: (
+$iz-light-theme-foreground: (
   base: color(black),
 );
 
-$sz-light-theme-background: (
+$iz-light-theme-background: (
   background: color(white),
 );
 
-$sz-light-theme: (
-  primary: mat-palette($sz-primary),
-  accent: mat-palette($sz-accent),
-  warn: mat-palette($sz-warn),
+$iz-light-theme: (
+  primary: mat-palette($iz-primary),
+  accent: mat-palette($iz-accent),
+  warn: mat-palette($iz-warn),
   is-dark: false,
-  foreground: map_merge($mat-light-theme-foreground, $sz-light-theme-foreground),
-  background: map_merge($mat-light-theme-background, $sz-light-theme-background),
+  foreground: map_merge($mat-light-theme-foreground, $iz-light-theme-foreground),
+  background: map_merge($mat-light-theme-background, $iz-light-theme-background),
 );
 
-$sz-dark-theme-foreground: (
+$iz-dark-theme-foreground: (
   base: color(white),
 );
 
-$sz-dark-theme-background: (
+$iz-dark-theme-background: (
   background: color(black),
 );
 
-$sz-dark-theme: (
-  primary: mat-palette($sz-primary),
-  accent: mat-palette($sz-accent),
-  warn: mat-palette($sz-warn),
+$iz-dark-theme: (
+  primary: mat-palette($iz-primary),
+  accent: mat-palette($iz-accent),
+  warn: mat-palette($iz-warn),
   is-dark: true,
-  foreground: map_merge($mat-dark-theme-foreground, $sz-dark-theme-foreground),
-  background: map_merge($mat-dark-theme-background, $sz-dark-theme-background),
+  foreground: map_merge($mat-dark-theme-foreground, $iz-dark-theme-foreground),
+  background: map_merge($mat-dark-theme-background, $iz-dark-theme-background),
 );

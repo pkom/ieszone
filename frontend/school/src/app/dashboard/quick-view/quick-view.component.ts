@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sz-quick-view',
+  selector: 'iz-quick-view',
   templateUrl: './quick-view.component.html',
   styleUrls: ['./quick-view.component.scss'],
 })

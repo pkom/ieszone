@@ -39,9 +39,9 @@
         "backend/shared/filters",
         "backend/shared/guards"
       ],
-      "@env": ["frontend/client/src/environments/environment"],
-      "@shared/*": ["frontend/client/src/app/shared/*"],
-      "@core/*": ["frontend/client/src/app/core/*"]      
+      "@env": ["frontend/school/src/environments/environment"],
+      "@shared/*": ["frontend/school/src/app/shared/*"],
+      "@core/*": ["frontend/school/src/app/core/*"]      
     }
   },
   "exclude": [

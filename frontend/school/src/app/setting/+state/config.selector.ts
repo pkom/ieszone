@@ -8,6 +8,16 @@ export const SelectStatus = createSelector(
   (state: ConfigState) => state.status,
 );
 
+export const SelectConfiguration = createSelector(
+  SelectConfig,
+  (state: ConfigState) => state.config,
+);
+
+export const SelectCourses = createSelector(
+  SelectConfig,
+  (state: ConfigState) => state.courses,
+);
+
 export const SelectUser = createSelector(
   SelectConfig,
   (state: ConfigState) => state.user,

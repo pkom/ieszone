@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  REST_CORE: 'http://localhost:3000/v1',
 };
 
 /*

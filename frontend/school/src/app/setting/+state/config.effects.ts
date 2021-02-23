@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { GeneralService } from '../../_services/general.service';
+import { GeneralService } from '@core/general.service';
 import {
   LoadConfig,
   SuccessLoadConfig,

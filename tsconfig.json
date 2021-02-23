@@ -40,7 +40,6 @@
         "backend/shared/guards"
       ],
       "@env": ["frontend/school/src/environments/environment"],
-      "@shared/*": ["frontend/school/src/app/shared/*"],
       "@core/*": ["frontend/school/src/app/core/*"]      
     }
   },

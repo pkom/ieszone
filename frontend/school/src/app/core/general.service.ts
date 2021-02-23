@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '@env';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { HttpService } from '@core/http.service';
-import { Config, Course } from './config.model';
-import { catchError, map, shareReplay, tap } from 'rxjs/operators';
+import { map, shareReplay, tap } from 'rxjs/operators';
+import { Config, Course } from '@iz/interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,11 +18,11 @@ export class GeneralService {
   darkTheme$ = new BehaviorSubject<boolean>(false);
   slider$ = new BehaviorSubject<boolean | string>(false);
 
-  config$: Observable<Config> = this.httpService
+  appConfig$: Observable<Config> = this.httpService
     .get(GeneralService.END_POINT_CONFIG)
     .pipe(shareReplay());
 
-  courses$: Observable<Course[]> = this.httpService
+  appCourses$: Observable<Course[]> = this.httpService
     .get(GeneralService.END_POINT_COURSES)
     .pipe(shareReplay());
 
@@ -30,7 +30,7 @@ export class GeneralService {
 
   selectedCourse$ = combineLatest([
     this.courseSelectedAction,
-    this.courses$,
+    this.appCourses$,
   ]).pipe(
     map(([selectedCourseId, courses]) =>
       courses.find((course) => course.id === selectedCourseId),

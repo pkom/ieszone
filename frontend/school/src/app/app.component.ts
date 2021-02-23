@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { LoadConfig } from './setting/+state/config.action';
 import { Observable } from 'rxjs';
-import { AppStatus } from '@iz/interface';
-import { SelectStatus } from './setting/+state/config.selector';
+import { AppConfig, AppStatus, Course } from '@iz/interface';
+import {
+  SelectConfiguration,
+  SelectCourses,
+  SelectStatus,
+} from './setting/+state/config.selector';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -13,10 +17,18 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent {
   appStatus$: Observable<AppStatus> = this.store.select(SelectStatus);
+  appConfig$: Observable<AppConfig> = this.store.select(SelectConfiguration);
+  appCourses$: Observable<Course[]> = this.store.select(SelectCourses);
 
   constructor(private store: Store) {
     this.appStatus$.pipe(filter((val) => !!val)).subscribe((status) => {
       console.info(status?.message);
+    });
+    this.appConfig$.subscribe((config) => {
+      console.info(config);
+    });
+    this.appCourses$.subscribe((courses) => {
+      console.info(courses);
     });
   }
 

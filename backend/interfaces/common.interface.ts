@@ -5,7 +5,7 @@ export interface AppStatus {
   message: string;
 }
 
-export interface Config {
+export interface AppConfig {
   center: string;
   code: string;
   address: string;
@@ -25,9 +25,9 @@ export interface Course {
   denomination: string;
 }
 
-// export interface Config {
-//   map: string;
-// }
+export interface Config {
+  map: string;
+}
 
 export interface Permissions {
   [index: string]: Actions[];

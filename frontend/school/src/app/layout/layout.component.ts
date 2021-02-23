@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GeneralService } from '../_services/general.service';
+import { GeneralService } from '@core/general.service';
 
 @Component({
   selector: 'iz-layout',

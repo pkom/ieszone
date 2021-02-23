@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GeneralService } from '../../../_services/general.service';
+import { GeneralService } from '@core/general.service';
 import { Store } from '@ngrx/store';
 import { LogoutUser } from '../../../setting/+state/config.action';
 import { Router } from '@angular/router';

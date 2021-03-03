@@ -15,9 +15,6 @@ export class GeneralService {
 
   appStatus$ = this.httpService.get(GeneralService.END_POINT_STATUS);
 
-  darkTheme$ = new BehaviorSubject<boolean>(false);
-  slider$ = new BehaviorSubject<boolean | string>(false);
-
   appConfig$: Observable<Config> = this.httpService
     .get(GeneralService.END_POINT_CONFIG)
     .pipe(shareReplay());
@@ -25,6 +22,9 @@ export class GeneralService {
   appCourses$: Observable<Course[]> = this.httpService
     .get(GeneralService.END_POINT_COURSES)
     .pipe(shareReplay());
+
+  darkTheme$ = new BehaviorSubject<boolean>(false);
+  slider$ = new BehaviorSubject<boolean | string>(false);
 
   private courseSelectedAction = new BehaviorSubject<string>(null);
 

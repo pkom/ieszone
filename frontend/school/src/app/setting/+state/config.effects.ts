@@ -11,7 +11,6 @@ import { map, mergeMap, exhaustMap, switchMap } from 'rxjs/operators';
 import { AppStatus, AuthResponse, JwtPayload } from '@iz/interface';
 import { AuthService } from 'frontend/shared/src/lib/services/auth.service';
 import { Router } from '@angular/router';
-import { forkJoin } from 'rxjs';
 
 @Injectable()
 export class ConfigEffects {

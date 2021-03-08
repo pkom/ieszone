@@ -3,7 +3,7 @@ import { environment } from '@env';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { HttpService } from '@core/http.service';
 import { map, shareReplay, tap } from 'rxjs/operators';
-import { Config, Course } from '@iz/interface';
+import { AppConfig, Config, Course } from '@iz/interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class GeneralService {
 
   appStatus$ = this.httpService.get(GeneralService.END_POINT_STATUS);
 
-  appConfig$: Observable<Config> = this.httpService
+  appConfig$: Observable<AppConfig> = this.httpService
     .get(GeneralService.END_POINT_CONFIG)
     .pipe(shareReplay());
 

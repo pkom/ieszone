@@ -7,31 +7,98 @@ import {
   LoginUser,
   SuccessLogin,
 } from './config.action';
-import { map, mergeMap, exhaustMap, switchMap } from 'rxjs/operators';
-import { AppStatus, AuthResponse, JwtPayload } from '@iz/interface';
+import { map, mergeMap, exhaustMap, switchMap, tap } from 'rxjs/operators';
+import { AppConfig, AppStatus, AuthResponse, JwtPayload } from '@iz/interface';
 import { AuthService } from 'frontend/shared/src/lib/services/auth.service';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 
 @Injectable()
 export class ConfigEffects {
   loadConfig$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LoadConfig),
-      mergeMap(() =>
-        this.general.appStatus$.pipe(
-          switchMap((status: AppStatus) => {
-            let actions = [];
-            const token = localStorage.getItem('token');
-            if (token) {
-              actions.push(
-                SuccessLogin({
-                  payload: { user: this.decodeUser(token) },
-                }),
-              );
-            }
-            actions.push(SuccessLoadConfig({ payload: { status } }));
-            return actions;
+      switchMap(() => {
+        return forkJoin([
+          this.general.appStatus$.pipe(
+            switchMap((status: AppStatus) => {
+              let actions = [];
+              const token = localStorage.getItem('token');
+              if (token) {
+                actions.push(
+                  SuccessLogin({
+                    payload: { user: this.decodeUser(token) },
+                  }),
+                );
+              }
+              actions.push(SuccessLoadConfig({ payload: { status } }));
+              return actions;
+            }),
+          ),
+          this.general.appConfig$.pipe(
+            switchMap((config: AppConfig) => {
+              let actions = [];
+              const token = localStorage.getItem('token');
+              if (token) {
+                actions.push(
+                  SuccessLogin({
+                    payload: { user: this.decodeUser(token) },
+                  }),
+                );
+              }
+              actions.push(SuccessLoadConfig({ payload: { config } }));
+              return actions;
+            }),
+          ),
+        ]).pipe(
+          map(([res1, res2]) => {
+            console.info(res1);
+            console.info(res2);
+            return res1;
           }),
+        );
+      }),
+    ),
+  );
+
+  loadConfigOld$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(LoadConfig),
+      switchMap(() =>
+        forkJoin([
+          this.general.appStatus$.pipe(
+            switchMap((status: AppStatus) => {
+              let actions = [];
+              const token = localStorage.getItem('token');
+              if (token) {
+                actions.push(
+                  SuccessLogin({
+                    payload: { user: this.decodeUser(token) },
+                  }),
+                );
+              }
+              actions.push(SuccessLoadConfig({ payload: { status } }));
+              return actions;
+            }),
+          ),
+          this.general.appConfig$.pipe(
+            switchMap((config: AppConfig) => {
+              let actions = [];
+              const token = localStorage.getItem('token');
+              if (token) {
+                actions.push(
+                  SuccessLogin({
+                    payload: { user: this.decodeUser(token) },
+                  }),
+                );
+              }
+              actions.push(SuccessLoadConfig({ payload: { config } }));
+              return actions;
+            }),
+          ),
+        ]).pipe(
+          tap((res) => console.info(res)),
+          map((res) => res[0]),
         ),
       ),
     ),

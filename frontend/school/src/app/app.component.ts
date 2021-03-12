@@ -24,12 +24,6 @@ export class AppComponent {
     this.appStatus$.pipe(filter((val) => !!val)).subscribe((status) => {
       console.info(status?.message);
     });
-    this.appConfig$.subscribe((config) => {
-      console.info(config);
-    });
-    this.appCourses$.subscribe((courses) => {
-      console.info(courses);
-    });
   }
 
   ngOnInit() {

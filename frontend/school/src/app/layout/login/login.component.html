@@ -3,7 +3,7 @@
   <div class="hero">
     <img src="assets/images/login-cover.svg" alt="School" />
     <div class="login">
-      <h1>I.E.S. Maestro Juan Calero</h1>
+      <h1>{{ center$ | async }}</h1>
       <form [formGroup]="loginForm">
         <div class="fields">
           <iz-input
@@ -17,10 +17,12 @@
             required="true"
             [control]="loginForm.controls.password"
           ></iz-input>
-        </div>
-        <div class="pass">
-          <iz-checkbox [initialValue]="true" name="Recuérdame"></iz-checkbox>
-          <span class="link">¿Olvidaste la contraseña?</span>
+          <iz-select
+            name="Curso"
+            [options]="courses$ | async"
+            required="true"
+            value="defaultCourseId$ | async"
+          ></iz-select>
         </div>
         <iz-button name="Login" (click)="login()"></iz-button>
       </form>

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { GeneralService } from '@core/general.service';
 import { LoginUser } from '../../setting/+state/config.action';
-import { map, pluck, switchMap } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'z-login',
@@ -13,6 +13,7 @@ import { map, pluck, switchMap } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
   center$ = this.general.appConfig$.pipe(pluck('center'));
   defaultCourseId$ = this.general.appConfig$.pipe(pluck('defaultCourse', 'id'));
+  defaultCourseId = '';
   courses$ = this.general.appCourses$.pipe(
     map((courses) =>
       courses.map((course) => ({
@@ -33,6 +34,10 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       userName: [''],
       password: [''],
+      course: [''],
+    });
+    this.defaultCourseId$.subscribe((defaultCourseId) => {
+      this.loginForm['course'] = defaultCourseId;
     });
   }
 

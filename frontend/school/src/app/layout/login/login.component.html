@@ -1,7 +1,7 @@
 <div class="view-port">
   <iz-logo [poweredBy]="false" size="large"></iz-logo>
   <div class="hero">
-    <img src="assets/images/login-cover.svg" alt="School" />
+    <img src="assets/images/login-cover.svg" alt="IES" />
     <div class="login">
       <h1>{{ center$ | async }}</h1>
       <form [formGroup]="loginForm">
@@ -21,7 +21,7 @@
             name="Curso"
             [options]="courses$ | async"
             required="true"
-            value="defaultCourseId$ | async"
+            [control]="loginForm.controls.course"
           ></iz-select>
         </div>
         <iz-button name="Login" (click)="login()"></iz-button>

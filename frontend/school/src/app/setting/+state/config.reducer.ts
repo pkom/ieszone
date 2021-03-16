@@ -14,6 +14,7 @@ export interface ConfigState {
   status: AppStatus;
   config: AppConfig;
   courses: Course[];
+  courseSelected: Course;
   user: JwtPayload;
 }
 
@@ -21,6 +22,7 @@ export const initConfig: ConfigState = {
   status: null,
   config: null,
   courses: [],
+  courseSelected: null,
   user: null,
 };
 

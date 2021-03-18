@@ -18,7 +18,7 @@ export interface ConfigState {
   user: JwtPayload;
 }
 
-export const initConfig: ConfigState = {
+export const initialState: ConfigState = {
   status: null,
   config: null,
   courses: [],
@@ -27,7 +27,7 @@ export const initConfig: ConfigState = {
 };
 
 export const configReducer = createReducer(
-  initConfig,
+  initialState,
   on(LoadConfig, LoginUser, (state) => state),
   on(LogoutUser, ({ user, ...rest }) => rest),
   on(SuccessLoadConfig, SuccessLogin, (state: ConfigState, { payload }) => ({
@@ -35,3 +35,9 @@ export const configReducer = createReducer(
     ...payload,
   })),
 );
+
+export const getStatus = (state: ConfigState) => state.status;
+export const getConfig = (state: ConfigState) => state.config;
+export const getCourses = (state: ConfigState) => state.courses;
+export const getUser = (state: ConfigState) => state.user;
+export const getCourseSelected = (state: ConfigState) => state.courseSelected;

@@ -3,7 +3,7 @@
   <div class="hero">
     <img src="assets/images/login-cover.svg" alt="IES" />
     <div class="login">
-      <h1>{{ (config$ | async)?.center }}</h1>
+      <h1>{{ (config$ | async)?.code }} - {{ (config$ | async)?.center }}</h1>
       <form [formGroup]="loginForm">
         <div class="fields">
           <iz-input
@@ -22,7 +22,6 @@
             [options]="courses$ | async"
             required="true"
             [control]="loginForm.controls.course"
-            value="(config$ | async)?.defaultCourse.id"
           ></iz-select>
         </div>
         <iz-button name="Login" (click)="login()"></iz-button>

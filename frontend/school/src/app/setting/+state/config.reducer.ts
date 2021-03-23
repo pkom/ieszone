@@ -8,36 +8,40 @@ import {
   LogoutUser,
 } from './config.action';
 
-export const ConfigFeatureKey = 'config';
+export const SettingFeatureKey = 'setting';
 
-export interface ConfigState {
+export interface AppState {
   status: AppStatus;
   config: AppConfig;
   courses: Course[];
-  courseSelected: Course;
+  selectedCourse: Course;
   user: JwtPayload;
 }
 
-export const initialState: ConfigState = {
+export const initialState: AppState = {
   status: null,
   config: null,
   courses: [],
-  courseSelected: null,
+  selectedCourse: null,
   user: null,
 };
 
-export const configReducer = createReducer(
+const _settingReducer = createReducer(
   initialState,
   on(LoadConfig, LoginUser, (state) => state),
   on(LogoutUser, ({ user, ...rest }) => rest),
-  on(SuccessLoadConfig, SuccessLogin, (state: ConfigState, { payload }) => ({
+  on(SuccessLoadConfig, SuccessLogin, (state: AppState, { payload }) => ({
     ...state,
     ...payload,
   })),
 );
 
-export const getStatus = (state: ConfigState) => state.status;
-export const getConfig = (state: ConfigState) => state.config;
-export const getCourses = (state: ConfigState) => state.courses;
-export const getUser = (state: ConfigState) => state.user;
-export const getCourseSelected = (state: ConfigState) => state.courseSelected;
+export function settingReducer(state, action) {
+  return _settingReducer(state, action);
+}
+
+export const getStatus = (state: AppState) => state.status;
+export const getConfig = (state: AppState) => state.config;
+export const getCourses = (state: AppState) => state.courses;
+export const getUser = (state: AppState) => state.user;
+export const getSelectedCourse = (state: AppState) => state.selectedCourse;

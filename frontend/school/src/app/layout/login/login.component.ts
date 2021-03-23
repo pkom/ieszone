@@ -11,8 +11,7 @@ import * as fromConfig from '../../setting/+state/config.selector';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  center$ = this.store.select(fromConfig.getCenter);
-  defaultCourse$ = this.store.select(fromConfig.getDefaultCourse);
+  config$ = this.store.select(fromConfig.getConfig);
   courses$ = this.store.select(fromConfig.getCourses).pipe(
     map((courses) =>
       courses.map((course) => ({

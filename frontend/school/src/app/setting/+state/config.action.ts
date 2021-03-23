@@ -1,19 +1,27 @@
 import { createAction, props } from '@ngrx/store';
-import { ConfigState } from './config.reducer';
+import { AppState } from './config.reducer';
 import { Login } from '@iz/interface';
 
-export const LoadConfig = createAction('[Config] Load Init');
+export enum ESettingActions {
+  LoadConfig = '[Config] Load Init',
+  SuccessLoadConfig = '[Config] Load Success',
+  LoginUser = '[Config] Login',
+  LogoutUser = '[Config] Logout',
+  SuccessLogin = '[Config] Login Success',
+}
 
+export const LoadConfig = createAction(ESettingActions.LoadConfig);
 export const SuccessLoadConfig = createAction(
-  '[Config] Load Success',
-  props<{ payload: Partial<ConfigState> }>(),
+  ESettingActions.SuccessLoadConfig,
+  props<{ payload: Partial<AppState> }>(),
 );
 
-export const LoginUser = createAction('[Config] Login', props<Login>());
-
-export const LogoutUser = createAction('[Config] Logout');
-
+export const LoginUser = createAction(
+  ESettingActions.LoginUser,
+  props<Login>(),
+);
+export const LogoutUser = createAction(ESettingActions.LogoutUser);
 export const SuccessLogin = createAction(
-  '[Config] Login Success',
-  props<{ payload: Partial<ConfigState> }>(),
+  ESettingActions.SuccessLogin,
+  props<{ payload: Partial<AppState> }>(),
 );

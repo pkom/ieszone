@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
-import { ConfigFeatureKey, configReducer } from './+state/config.reducer';
+import { SettingFeatureKey, settingReducer } from './+state/config.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ConfigEffects } from './+state/config.effects';
 import { GeneralComponent } from './general/general.component';
@@ -15,7 +15,7 @@ const routes: Routes = [
   declarations: [GeneralComponent],
   imports: [
     CommonModule,
-    StoreModule.forFeature(ConfigFeatureKey, configReducer),
+    StoreModule.forFeature(SettingFeatureKey, settingReducer),
     EffectsModule.forFeature([ConfigEffects]),
     RouterModule.forChild(routes),
   ],

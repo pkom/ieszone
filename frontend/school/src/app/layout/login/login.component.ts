@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { LoginUser } from '../../setting/+state/config.action';
 import { map, pluck, tap } from 'rxjs/operators';
 import * as fromConfig from '../../setting/+state/config.selector';
+import { Course } from '../../core/config.model';
 
 @Component({
   selector: 'z-login',
@@ -30,9 +31,6 @@ export class LoginComponent implements OnInit {
       password: [''],
       course: [''],
     });
-    this.config$.subscribe((config) =>
-      this.loginForm.patchValue({ course: config.defaultCourse.id }),
-    );
   }
 
   login() {

@@ -22,14 +22,17 @@ export class LoginComponent implements OnInit {
   );
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private store: Store) {}
+  constructor(private formBuilder: FormBuilder, private store: Store) {}
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
+    this.loginForm = this.formBuilder.group({
       userName: [''],
       password: [''],
       course: [''],
     });
+    this.config$.subscribe((config) =>
+      this.loginForm.patchValue({ course: config.defaultCourse.id }),
+    );
   }
 
   login() {

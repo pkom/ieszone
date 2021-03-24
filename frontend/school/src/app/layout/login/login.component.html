@@ -2,8 +2,8 @@
   <iz-logo [poweredBy]="true" size="large"></iz-logo>
   <div class="hero">
     <img src="assets/images/login-cover.svg" alt="IES" />
-    <div class="login">
-      <h1>{{ (config$ | async)?.code }} - {{ (config$ | async)?.center }}</h1>
+    <div class="login" *ngIf="config$ | async as config">
+      <h1>{{ config.code }} - {{ config.center }}</h1>
       <form [formGroup]="loginForm">
         <div class="fields">
           <iz-input
@@ -18,8 +18,9 @@
             [control]="loginForm.controls.password"
           ></iz-input>
           <iz-select
+            *ngIf="courses$ | async as courses"
             name="Curso"
-            [options]="courses$ | async"
+            [options]="courses"
             required="true"
             [control]="loginForm.controls.course"
           ></iz-select>

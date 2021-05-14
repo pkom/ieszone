@@ -23,6 +23,7 @@
             [options]="courses"
             required="true"
             [control]="loginForm.controls.course"
+            [initialValue]="config.defaultCourse.id"
           ></iz-select>
         </div>
         <iz-button name="Login" (click)="login()"></iz-button>

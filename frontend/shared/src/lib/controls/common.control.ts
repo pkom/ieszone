@@ -78,6 +78,7 @@ export abstract class ControlAbstract {
     if (this.required) this.validators.unshift(Validators.required);
     if (this.control) {
       if (this.useDefault) {
+        this.control.setValue(this.initialValue);
         this.control.setValidators(this.validators);
         this.control.setAsyncValidators(this.asyncValidators);
       }
